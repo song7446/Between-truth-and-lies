@@ -1,58 +1,68 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class FadeInOut : MonoBehaviour
 {
-    public float fadeSpeed = 0.25f;
+    float fadeSpeed = 0.5f;
     public bool fadeInOnStart = true;
     public bool fadeOutOnExit = true;
 
-    GameObject gc;
-    SpriteRenderer sr;
+    GameObject policeImg;
+    GameObject talkBackGround;
+
+    SpriteRenderer policeImgSr;
+    SpriteRenderer talkBackGroudImg;
+
+    int count = 0;
 
     void Start()
     {
-        gc = GameObject.Find("PoliceImg");
-        sr = gc.GetComponent<SpriteRenderer>();
-        sr.material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-        //if (fadeInOnStart)
-        //{
-        //    Debug.Log(sr);
-        //    sr.material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-        //    StartCoroutine(FadeIn());
-        //}
+        policeImg = GameObject.Find("PoliceImg");
+        // talkBackGround = GameObject.Find("TalkBackGround");
+
+        policeImgSr = policeImg.GetComponent<SpriteRenderer>();
+        // talkBackGroudImg = talkBackGround.GetComponent<SpriteRenderer>();
+
+        policeImgSr.material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        // talkBackGroudImg.color = new Color(0.239f, 0.239f, 0.239f, 0.0f);
+
     }
 
     void Update()
     {
-        if (fadeInOnStart && Input.GetMouseButtonUp(0))
+        if (fadeInOnStart && count == 0)
         {
-            Debug.Log(sr);
-            sr.material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-            StartCoroutine(FadeIn());
+            if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space))
+            {
+                StartCoroutine(FadeIn(policeImgSr));
+                // StartCoroutine(FadeIn(talkBackGroudImg));
+                count++;
+            }
         }
     }
 
-    IEnumerator FadeIn()
+    IEnumerator FadeIn(SpriteRenderer spriterenderer)
     {
         float fade = 0.0f;
-        while (sr.material.color.a < 1.0f)
+        while (spriterenderer.material.color.a < 1.0f)
         {
             fade += Time.deltaTime * fadeSpeed;
-            sr.material.color = new Color(1.0f, 1.0f, 1.0f, fade);
+            spriterenderer.material.color = new Color(1.0f, 1.0f, 1.0f, fade);
             yield return null;
         }
     }
 
-    IEnumerator FadeOut()
+    IEnumerator FadeOut(SpriteRenderer spriterenderer)
     {
         float fade = 1.0f;
-        while (sr.material.color.a > 0.0f)
+        while (spriterenderer.material.color.a > 0.0f)
         {
             fade -= Time.deltaTime * fadeSpeed;
-            sr.material.color = new Color(1.0f, 1.0f, 1.0f, fade);
+            spriterenderer.material.color = new Color(1.0f, 1.0f, 1.0f, fade);
             yield return null;
         }
     }
+
 }

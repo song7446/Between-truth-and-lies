@@ -13,61 +13,61 @@ public class StoryScript : MonoBehaviour
     GameObject countObj;
     GameObject textObj;
 
-    string juniorDetective = "후배 형사";
-    string protagonist = "주인공";
-
     private string text;
     private float delay = 0.05f;
 
     int scriptCount = 0;
-    bool printBool = true;
+    public bool printBool = false;
 
     void Start()
     {
-        countObj = GameObject.Find("BackGround");
+        countObj = GameObject.Find("CrimeSceneBackGround");
         textObj = GameObject.Find("Scene1ScriptObj");
+
+        ScriptTxt.text = "";
+        Name.text = "";
     }
 
     void Update()
     {
-        int exCount = scriptCount;
-        scriptCount = countObj.GetComponent<BackgroundScript>().count;
-        if(exCount != scriptCount)
+        if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space))
         {
-            printBool = true;
-        }
-
-        if (printBool)
-        {
-            updateScript();
-            printBool = false;
+            scriptCount++;
+            if (scriptCount % 2 == 0)
+            {
+                UpdateScript(scriptCount);
+            }
         }
     }
 
-
-    void updateScript()
+    public void UpdateScript(int num)
     {
-        text = textObj.GetComponent<Scene1Script>().scriptCollection(scriptCount);
-        string name = textObj.GetComponent<Scene1Script>().nameCollection(scriptCount);
+        text = textObj.GetComponent<Scene1Script>().ScriptCollection(num);
+        string name = textObj.GetComponent<Scene1Script>().NameCollection(num);
 
         Name.text = name;
         ScriptTxt.text = "";
-        StartCoroutine(textPrint(delay));
+        StartCoroutine(TextPrint(delay));
+
     }
 
-    IEnumerator textPrint(float d)
+    public IEnumerator TextPrint(float d)
     {
         int count = 0;
-
         while (count != text.Length)
         {
+            if (Input.GetMouseButton(0) || Input.GetKeyUp(KeyCode.Space))
+            {
+                ScriptTxt.text = text;
+                yield break;
+            }
             if (count < text.Length)
             {
                 ScriptTxt.text += text[count].ToString();
                 count++;
             }
-
             yield return new WaitForSeconds(d);
         }
+        scriptCount++;
     }
 }
