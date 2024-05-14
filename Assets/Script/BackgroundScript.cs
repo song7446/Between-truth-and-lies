@@ -11,6 +11,7 @@ public class BackgroundScript : MonoBehaviour
 
     void Start()
     {
+
     }
 
     void Update()

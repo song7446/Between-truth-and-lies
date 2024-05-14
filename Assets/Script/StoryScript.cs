@@ -56,7 +56,7 @@ public class StoryScript : MonoBehaviour
         int count = 0;
         while (count != text.Length)
         {
-            if (Input.GetMouseButton(0) || Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space))
             {
                 ScriptTxt.text = text;
                 yield break;
