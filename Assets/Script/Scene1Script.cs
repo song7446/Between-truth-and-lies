@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Scene1Script : MonoBehaviour
 {
+    // 씬#1 스토리 스크립트
     public string ScriptCollection(int num)
     {
         string scriptText = "";
@@ -115,6 +116,7 @@ public class Scene1Script : MonoBehaviour
         return scriptText;
     }
 
+    // 씬#1 화자 이름 스크립트
     public string NameCollection(int num)
     {
         string name = "";
