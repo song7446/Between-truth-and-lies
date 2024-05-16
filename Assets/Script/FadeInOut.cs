@@ -10,17 +10,13 @@ public class FadeInOut : MonoBehaviour
     public bool fadeOutOnExit = true;
 
     GameObject policeImg;
-    GameObject talkBackGround;
 
     SpriteRenderer policeImgSr;
-    SpriteRenderer talkBackGroudImg;
 
     void Start()
     {
         // 형사 이미지 오브젝트 불러오기 
         policeImg = GameObject.Find("PoliceImg");
-
-        // 형사 이미지 오브젝트의 스프라이트렌더러 불러오기
         policeImgSr = policeImg.GetComponent<SpriteRenderer>();
 
         // 형사 이미지 오브젝트 투명화 
@@ -31,12 +27,6 @@ public class FadeInOut : MonoBehaviour
 
         // 형사 이미지 상태 
         policeImgOn = true;
-
-
-        // talkBackGround = GameObject.Find("TalkBackGround");
-        // talkBackGroudImg = talkBackGround.GetComponent<SpriteRenderer>();       
-        // talkBackGroudImg.color = new Color(0.239f, 0.239f, 0.239f, 0.0f);
-        // StartCoroutine(FadeIn(talkBackGroudImg));        
     }
 
     void Update()
@@ -44,7 +34,7 @@ public class FadeInOut : MonoBehaviour
 
     }
 
-    // 이미지 페이드인 함수 
+    // 스프라이트렌더러 페이드인 함수 
     IEnumerator FadeIn(SpriteRenderer spriterenderer)
     {
         float fade = 0.0f;
@@ -62,7 +52,7 @@ public class FadeInOut : MonoBehaviour
         }
     }
 
-    // 이미지 페이드아웃 함수 
+    // 스프라이트 렌더러 페이드아웃 함수 
     IEnumerator FadeOut(SpriteRenderer spriterenderer)
     {
         float fade = 1.0f;

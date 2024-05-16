@@ -14,6 +14,7 @@ public class Scene1Script : MonoBehaviour
         switch (num)
         {
             case 0:
+                scriptText = "이곳인가...?";
                 break;
             case 2:
                 scriptText = "오셨습니까 선배님";
@@ -127,10 +128,10 @@ public class Scene1Script : MonoBehaviour
         switch (num)
         {
             case 0:
-                name = juniorDetective;
+                name = protagonist;
                 break;
             case 1:
-                name = protagonist;
+                name = juniorDetective;
                 break;
             case 2:
                 name = juniorDetective;
