@@ -98,7 +98,7 @@ public class Scene1Script : MonoBehaviour
                 scriptText = "살해 동기도 얘기해주지 않았지?";
                 break;
             case 56:
-                scriptText = "그렇긴 한데 정황상 성폭행인 것으로 보입니다.";
+                scriptText = "그렇긴 한데 정황상 성폭행으로 보입니다.";
                 break;
             case 58:
                 scriptText = "...";

@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class StoryScript : MonoBehaviour
 {
-    public Text ScriptTxt;
-    public Text Name;
+    public Text scriptTxt;
+    public Text talkName;
 
     GameObject textObj;
 
@@ -18,14 +18,18 @@ public class StoryScript : MonoBehaviour
     int scriptCount = 0;
     public bool printBool = false;
 
+    GameObject textPrintObj;
+
     void Start()
     {
         // 스토리 스크립트 가져오기
         textObj = GameObject.Find("Scene1ScriptObj");
 
         // 스토리 스크립트 초기화
-        ScriptTxt.text = "";
-        Name.text = "";
+        scriptTxt.text = "";
+        talkName.text = "";
+
+        textPrintObj = GameObject.Find("TextPrintObj");
     }
 
     void Update()
@@ -49,34 +53,10 @@ public class StoryScript : MonoBehaviour
         // 화자 이름
         string name = textObj.GetComponent<Scene1Script>().NameCollection(num);
 
-        Name.text = name;
-        ScriptTxt.text = "";
+        this.talkName.text = name;
+        scriptTxt.text = "";
 
         // 텍스트 한글자씩 출력
-        StartCoroutine(TextPrint(delay));
-
-    }
-
-    // 텍스트 한글자씩 출력 함수 
-    public IEnumerator TextPrint(float d)
-    {
-        int count = 0;
-        while (count != text.Length)
-        {
-            // 텍스트 한글자씩 출력 도중 마우스 및 스페이스바 클릭시 모든 텍스트를 띄우고 코루틴 종료
-            if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space))
-            {
-                ScriptTxt.text = text;
-                yield break;
-            }
-            if (count < text.Length)
-            {
-                ScriptTxt.text += text[count].ToString();
-                count++;
-            }
-            yield return new WaitForSeconds(d);
-        }
-
-        scriptCount++;
+        StartCoroutine(textPrintObj.GetComponent<TextPrintScript>().TextPrint(delay, text, scriptTxt));
     }
 }
