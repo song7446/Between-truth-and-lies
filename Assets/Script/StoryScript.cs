@@ -20,6 +20,8 @@ public class StoryScript : MonoBehaviour
 
     GameObject textPrintObj;
 
+    GameObject talkObj;
+
     void Start()
     {
         // 스토리 스크립트 가져오기
@@ -28,8 +30,6 @@ public class StoryScript : MonoBehaviour
         // 스토리 스크립트 초기화
         scriptTxt.text = "";
         talkName.text = "";
-
-        textPrintObj = GameObject.Find("TextPrintObj");
     }
 
     void Update()
