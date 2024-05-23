@@ -7,6 +7,16 @@ using UnityEngine.UI;
 
 public class StoryScript : MonoBehaviour
 {
+    public static StoryScript instance;
+
+    private void Awake()
+    {
+        if(StoryScript.instance == null)
+        {
+            StoryScript.instance = this;
+        }
+    }
+
     public Text scriptTxt;
     public Text talkName;
 
