@@ -6,38 +6,37 @@ using UnityEngine.UI;
 
 public class OpeningScript : MonoBehaviour
 {
+    public static OpeningScript instance;
+
     public Text openingTxt;
 
-    GameObject textPrintObj;
-    GameObject fadeInOutObj;
+    private void Awake()
+    {
+        if(OpeningScript.instance == null)
+        {
+            OpeningScript.instance = this;
+        }
+    }
 
-    void Start()
+    public void openingScript()
     {
         openingTxt.text = "";
 
-        // 한글자씩 출력 함수 오브젝트
-        textPrintObj = GameObject.Find("TextPrintObj");
         string txt = "Scene #1";
         float delay = 0.25f;
 
-        StartCoroutine(textPrintObj.GetComponent<TextPrintScript>().TextPrint(delay, txt, openingTxt));       
+        StartCoroutine(TextPrintScript.instance.TextPrint(delay, txt, openingTxt));
+
     }
 
-
-    void Update()
+    public void openingImage()
     {
-        if(Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space))
-        {
-            // 페이드 인아웃 함수 오브젝트
-            fadeInOutObj = GameObject.Find("FadeInOutObj");
+        // 프론트 그라운드 오브젝트
+        GameObject openingBackGround = GameObject.Find("FrontGround");
+        Image obgsp = openingBackGround.GetComponent<Image>();
 
-            // 프론트 그라운드 오브젝트
-            GameObject openingBackGround = GameObject.Find("FrontGround");
-            Image obgsp = openingBackGround.GetComponent<Image>();
-
-            Debug.Log(obgsp.color);
-
-            StartCoroutine(fadeInOutObj.GetComponent<FadeInOut>().imageFadeOut(obgsp));
-        }
+        // 프론트 그라운드 이미지 텍스트 페이드 아웃
+        StartCoroutine(FadeInOut.instance.imageFadeOut(obgsp));
+        StartCoroutine(FadeInOut.instance.textFadeOut(openingTxt));
     }
 }

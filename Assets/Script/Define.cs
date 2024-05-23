@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Define
 {
-    public enum ChaName
+    public enum txtPrinting
     {
-        Protagonist, JuniorDetective, SuspectA
+        onPrint, offPrint
     }
 }

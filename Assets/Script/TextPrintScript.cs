@@ -5,6 +5,17 @@ using UnityEngine.UI;
 
 public class TextPrintScript : MonoBehaviour
 {
+    public static TextPrintScript instance;
+
+    private void Awake()
+    {
+        if (TextPrintScript.instance == null)
+        {
+            TextPrintScript.instance = this;
+
+        }
+    }
+
     // 텍스트 한글자씩 출력 함수 
     public IEnumerator TextPrint(float d, string scriptText, Text objectText)
     {
