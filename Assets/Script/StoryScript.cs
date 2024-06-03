@@ -46,10 +46,9 @@ public class StoryScript : MonoBehaviour
         StartCoroutine(TextPrintScript.instance.TextPrint(delay, text, scriptTxt));
     }
 
-    public void coroutineSkip()
+    public void scriptCoroutineSkip()
     {
         StopAllCoroutines();
-        this.talkName.text = speakerName;
         scriptTxt.text = text;
     }
 }

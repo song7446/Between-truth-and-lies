@@ -42,4 +42,11 @@ public class PoliceImgScript : MonoBehaviour
         // 형사 이미지 상태 
         policeImgOn = true;
     }
+
+    public void policeImageFadeInSkip()
+    {
+        StopAllCoroutines();
+        policeImgSr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+    }
+
 }

@@ -18,14 +18,21 @@ public class StoryManager : MonoBehaviour
         {
             if (TextPrintScript.instance.printBool)
             {
-                StoryScript.instance.coroutineSkip();
+                OpeningScript.instance.openingScriptCoroutineSkip();
+                StoryScript.instance.scriptCoroutineSkip();
                 TextPrintScript.instance.printBool = false;
+            }
+            else if (FadeInOut.instance.fadeInOutBool)
+            {
+                OpeningScript.instance.openingImageFadeOutCoroutineSkip();
+                PoliceImgScript.instance.policeImageFadeInSkip();
+                FadeInOut.instance.fadeInOutBool = false;
             }
             else
             {
                 storyProceeding();
                 count++;
-            }
+            }           
         }
     }
 
