@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using TMPro;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,9 +22,8 @@ public class StoryScript : MonoBehaviour
     public Text talkName;
 
     private string text;
+    private string speakerName;
     private float delay = 0.05f;
-
-    public bool printBool = false;
 
     void Start()
     {
@@ -37,12 +37,19 @@ public class StoryScript : MonoBehaviour
         // 스토리 텍스트
         text = Scene1Script.instance.ScriptCollection(num);
         // 화자 이름
-        string name = Scene1Script.instance.NameCollection(num);
+        speakerName = Scene1Script.instance.NameCollection(num);
 
-        this.talkName.text = name;
+        this.talkName.text = speakerName;
         scriptTxt.text = "";
 
         // 텍스트 한글자씩 출력
         StartCoroutine(TextPrintScript.instance.TextPrint(delay, text, scriptTxt));
+    }
+
+    public void coroutineSkip()
+    {
+        StopAllCoroutines();
+        this.talkName.text = speakerName;
+        scriptTxt.text = text;
     }
 }

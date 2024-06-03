@@ -26,10 +26,9 @@ public class OpeningScript : MonoBehaviour
         float delay = 0.25f;
 
         StartCoroutine(TextPrintScript.instance.TextPrint(delay, txt, openingTxt));
-
     }
 
-    public void openingImage()
+    public void openingImageFadeOut()
     {
         // 프론트 그라운드 오브젝트
         GameObject openingBackGround = GameObject.Find("FrontGround");

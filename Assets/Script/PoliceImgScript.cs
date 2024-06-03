@@ -11,6 +11,7 @@ public class PoliceImgScript : MonoBehaviour
         if (PoliceImgScript.instance == null)
         {
             PoliceImgScript.instance = this;
+            
         }
     }
 

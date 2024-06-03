@@ -5,6 +5,7 @@ using UnityEngine;
 public class StoryManager : MonoBehaviour
 {
     private int count = 0;
+    private int storyCount = 0;
 
     void Start()
     {
@@ -15,8 +16,16 @@ public class StoryManager : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space))
         {
-            storyProceeding();
-            count++;
+            if (TextPrintScript.instance.printBool)
+            {
+                StoryScript.instance.coroutineSkip();
+                TextPrintScript.instance.printBool = false;
+            }
+            else
+            {
+                storyProceeding();
+                count++;
+            }
         }
     }
 
@@ -25,12 +34,30 @@ public class StoryManager : MonoBehaviour
         switch (count)
         {
             case 0:
-                OpeningScript.instance.openingImage();
+                OpeningScript.instance.openingImageFadeOut();
                 break;
             case 1:
+                StoryScript.instance.UpdateScript(storyCount);
+                storyCount++;
                 break;
             case 2:
                 PoliceImgScript.instance.policeImageFadeIn();
+                break;
+            case 3:
+                StoryScript.instance.UpdateScript(storyCount);
+                storyCount++;
+                break;
+            case 4:
+                StoryScript.instance.UpdateScript(storyCount);
+                storyCount++;
+                break;
+            case 5:
+                StoryScript.instance.UpdateScript(storyCount);
+                storyCount++;
+                break;
+            case 6:
+                StoryScript.instance.UpdateScript(storyCount);
+                storyCount++;
                 break;
         }
     }
