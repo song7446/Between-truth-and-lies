@@ -48,26 +48,10 @@ public class StoryManager : MonoBehaviour
             case 0:
                 OpeningScript.instance.openingImageFadeOut();
                 break;
-            case 1:
-                StoryScript.instance.UpdateScript(storyCount);
-                storyCount++;
-                break;
             case 2:
                 PoliceImgScript.instance.policeImageFadeIn();
                 break;
-            case 3:
-                StoryScript.instance.UpdateScript(storyCount);
-                storyCount++;
-                break;
-            case 4:
-                StoryScript.instance.UpdateScript(storyCount);
-                storyCount++;
-                break;
-            case 5:
-                StoryScript.instance.UpdateScript(storyCount);
-                storyCount++;
-                break;
-            case 6:
+            default:
                 StoryScript.instance.UpdateScript(storyCount);
                 storyCount++;
                 break;
@@ -83,7 +67,6 @@ public class StoryManager : MonoBehaviour
                 break;
             case 1:
                 OpeningScript.instance.openingImageFadeOutCoroutineSkip();
-                storyCount++;
                 break;
             case 3:
                 PoliceImgScript.instance.policeImageFadeInSkip();
