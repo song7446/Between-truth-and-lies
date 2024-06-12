@@ -48,4 +48,10 @@ public class OpeningScript : MonoBehaviour
         obgsp.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         openingTxt.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
     }
+
+    public void openingScriptCoroutineSkip()
+    {
+        StopAllCoroutines();
+        openingTxt.text = txt;
+    }
 }

@@ -78,7 +78,10 @@ public class StoryManager : MonoBehaviour
     {
         switch (count)
         {
-            case 2:
+            case 0:
+                OpeningScript.instance.openingScriptCoroutineSkip();
+                break;
+            case 1:
                 OpeningScript.instance.openingImageFadeOutCoroutineSkip();
                 storyCount++;
                 break;
