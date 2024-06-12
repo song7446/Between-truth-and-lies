@@ -17,12 +17,11 @@ public class FadeInOut : MonoBehaviour
 
     float fadeSpeed = 0.5f;
 
-    public bool fadeInOutBool = false;
 
     // 스프라이트렌더러 페이드인 함수 
     public IEnumerator srFadeIn(SpriteRenderer spriteRenderer)
     {
-        fadeInOutBool = true;
+        StoryManager.instance.coroutineBool = true;
 
         float fade = 0.0f;
 
@@ -33,13 +32,13 @@ public class FadeInOut : MonoBehaviour
             yield return null;
         }
 
-        fadeInOutBool = false;
+        StoryManager.instance.coroutineBool = false;
     }
 
     // 스프라이트 렌더러 페이드아웃 함수 
     public IEnumerator srFadeOut(SpriteRenderer spriteRenderer)
     {
-        fadeInOutBool = true;
+        StoryManager.instance.coroutineBool = true;
 
         float fade = 1.0f;
 
@@ -50,13 +49,13 @@ public class FadeInOut : MonoBehaviour
             yield return null;
         }
 
-        fadeInOutBool = false;
+        StoryManager.instance.coroutineBool = false;
     }
 
     // 이미지 페이드인 함수
     public IEnumerator imageFadeIn(Image image)
     {
-        fadeInOutBool = true;
+        StoryManager.instance.coroutineBool = true;
 
         float fade = 0.0f;
 
@@ -71,13 +70,13 @@ public class FadeInOut : MonoBehaviour
             yield return null;
         }
 
-        fadeInOutBool = false;
+        StoryManager.instance.coroutineBool = false;
     }
 
     // 이미지 페이드아웃 함수 
     public IEnumerator imageFadeOut(Image image)
     {
-        fadeInOutBool = true;
+        StoryManager.instance.coroutineBool = true;
 
         float fade = 1.0f;
 
@@ -92,13 +91,13 @@ public class FadeInOut : MonoBehaviour
             yield return null;
         }
 
-        fadeInOutBool = false;
+        StoryManager.instance.coroutineBool = false;
     }
 
     // 텍스트 페이드인 함수
     public IEnumerator textFadeIn(Text text)
     {
-        fadeInOutBool = true;
+        StoryManager.instance.coroutineBool = true;
 
         float fade = 0.0f;
 
@@ -113,13 +112,13 @@ public class FadeInOut : MonoBehaviour
             yield return null;
         }
 
-        fadeInOutBool = false;
+        StoryManager.instance.coroutineBool = false;
     }
 
     // 텍스트 페이드아웃 함수 
     public IEnumerator textFadeOut(Text text)
     {
-        fadeInOutBool = true;
+        StoryManager.instance.coroutineBool = true;
 
         float fade = 1.0f;
 
@@ -134,7 +133,7 @@ public class FadeInOut : MonoBehaviour
             yield return null;
         }
 
-        fadeInOutBool = false;
+        StoryManager.instance.coroutineBool = false;
     }
 
 }

@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class StoryManager : MonoBehaviour
 {
+    public static StoryManager instance;
+
     private int count = 0;
     private int storyCount = 0;
+
+    public bool coroutineBool = false;
+
+    private void Awake()
+    {
+        if (StoryManager.instance == null)
+        {
+            StoryManager.instance = this;
+        }
+    }
 
     void Start()
     {
@@ -16,23 +28,16 @@ public class StoryManager : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space))
         {
-            if (TextPrintScript.instance.printBool)
+            if (coroutineBool)
             {
-                OpeningScript.instance.openingScriptCoroutineSkip();
-                StoryScript.instance.scriptCoroutineSkip();
-                TextPrintScript.instance.printBool = false;
-            }
-            else if (FadeInOut.instance.fadeInOutBool)
-            {
-                OpeningScript.instance.openingImageFadeOutCoroutineSkip();
-                PoliceImgScript.instance.policeImageFadeInSkip();
-                FadeInOut.instance.fadeInOutBool = false;
+                coroutineSkip();
+                coroutineBool = false;
             }
             else
             {
                 storyProceeding();
                 count++;
-            }           
+            }
         }
     }
 
@@ -65,6 +70,23 @@ public class StoryManager : MonoBehaviour
             case 6:
                 StoryScript.instance.UpdateScript(storyCount);
                 storyCount++;
+                break;
+        }
+    }
+
+    void coroutineSkip()
+    {
+        switch (count)
+        {
+            case 2:
+                OpeningScript.instance.openingImageFadeOutCoroutineSkip();
+                storyCount++;
+                break;
+            case 3:
+                PoliceImgScript.instance.policeImageFadeInSkip();
+                break;
+            default:
+                StoryScript.instance.scriptCoroutineSkip();
                 break;
         }
     }

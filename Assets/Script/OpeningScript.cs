@@ -42,12 +42,6 @@ public class OpeningScript : MonoBehaviour
         StartCoroutine(FadeInOut.instance.textFadeOut(openingTxt));
     }
 
-    public void openingScriptCoroutineSkip()
-    {
-        StopAllCoroutines();
-        openingTxt.text = txt;
-    }
-
     public void openingImageFadeOutCoroutineSkip()
     {
         StopAllCoroutines();

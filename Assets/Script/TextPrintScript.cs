@@ -7,8 +7,6 @@ public class TextPrintScript : MonoBehaviour
 {
     public static TextPrintScript instance;
 
-    public bool printBool = false;
-
     private void Awake()
     {
         if (TextPrintScript.instance == null)
@@ -21,7 +19,7 @@ public class TextPrintScript : MonoBehaviour
     // 텍스트 한글자씩 출력 함수 
     public IEnumerator TextPrint(float d, string scriptText, Text objectText)
     {
-        printBool = true;
+        StoryManager.instance.coroutineBool = true;
         int count = 0;
         while (count != scriptText.Length)
         {
@@ -32,6 +30,6 @@ public class TextPrintScript : MonoBehaviour
             }
             yield return new WaitForSeconds(d);
         }
-        printBool = false;
+        StoryManager.instance.coroutineBool = false;
     }
 }
