@@ -13,6 +13,8 @@ public class OpeningScript : MonoBehaviour
     private string txt;
     private float delay;
 
+    public GameObject openingBackGround;
+
     private void Awake()
     {
         if(OpeningScript.instance == null)
@@ -34,12 +36,12 @@ public class OpeningScript : MonoBehaviour
     public void openingImageFadeOut()
     {
         // 프론트 그라운드 오브젝트
-        GameObject openingBackGround = GameObject.Find("FrontGround");
+        openingBackGround = GameObject.Find("FrontGround");
         obgsp = openingBackGround.GetComponent<Image>();
 
         // 프론트 그라운드 이미지 텍스트 페이드 아웃
         StartCoroutine(FadeInOut.instance.imageFadeOut(obgsp));
-        StartCoroutine(FadeInOut.instance.textFadeOut(openingTxt));
+        StartCoroutine(FadeInOut.instance.textFadeOut(openingTxt));            
     }
 
     public void openingImageFadeOutCoroutineSkip()

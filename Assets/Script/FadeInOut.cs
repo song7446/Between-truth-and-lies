@@ -134,6 +134,8 @@ public class FadeInOut : MonoBehaviour
         }
 
         StoryManager.instance.coroutineBool = false;
+
+        OpeningScript.instance.openingBackGround.SetActive(false);
     }
 
 }
