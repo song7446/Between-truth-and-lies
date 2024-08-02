@@ -10,9 +10,20 @@ public enum FlipMode
 [ExecuteInEditMode]
 public class NoteScript : MonoBehaviour
 {
+    public static NoteScript instance;
+
+    private void Awake()
+    {
+        if (NoteScript.instance == null)
+        {
+            NoteScript.instance = this;
+
+        }
+    }
+
     public Canvas canvas;
     [SerializeField]
-    RectTransform NotePanel;
+    public RectTransform NotePanel;
     public Sprite background;
     public Sprite[] notePages;
     public bool interactable = true;
@@ -38,6 +49,7 @@ public class NoteScript : MonoBehaviour
             return NotePanel.rect.height;
         }
     }
+
     public Image ClippingPlane;
     public Image NextPageClip;
     public Image Shadow;
@@ -60,9 +72,10 @@ public class NoteScript : MonoBehaviour
     Vector3 ebl;
     //follow point 
     Vector3 f;
-    bool pageDragging = false;
     //current flip mode
     FlipMode mode;
+
+    public bool noteBool = false;
 
     void Start()
     {
@@ -91,7 +104,10 @@ public class NoteScript : MonoBehaviour
         ShadowLTR.rectTransform.sizeDelta = new Vector2(pageWidth, shadowPageHeight);
         ShadowLTR.rectTransform.pivot = new Vector2(0, (pageWidth / 2) / shadowPageHeight);
 
-        canvas.gameObject.SetActive(false);
+        //float r = ClippingPlane.color.r;
+        //float g = ClippingPlane.color.g;
+        //float b = ClippingPlane.color.b;
+        //ClippingPlane.color = new Color(r, g, b, 0.0f);
     }
 
     private void CalcCurlCriticalPoints()
@@ -134,21 +150,7 @@ public class NoteScript : MonoBehaviour
             return localPos;
         }
     }
-    void Update()
-    {
-        if (pageDragging && interactable)
-        {
-            UpdateBook();
-        }
-    }
-    public void UpdateBook()
-    {
-        f = Vector3.Lerp(f, transformPoint(Input.mousePosition), Time.deltaTime * 10);
-        if (mode == FlipMode.RightToLeft)
-            UpdateBookRTLToPoint(f, NextPageClip);
-        else
-            UpdateBookLTRToPoint(f, NextPageClip);
-    }
+
     public void UpdateBookLTRToPoint(Vector3 followLocation, Image image)
     {
         mode = FlipMode.LeftToRight;
@@ -281,7 +283,6 @@ public class NoteScript : MonoBehaviour
     public void DragRightPageToPoint(Vector3 point, Image image)
     {
         if (currentPage >= notePages.Length) return;
-        pageDragging = true;
         mode = FlipMode.RightToLeft;
         f = point;
 
@@ -312,7 +313,6 @@ public class NoteScript : MonoBehaviour
     public void DragLeftPageToPoint(Vector3 point, Image image)
     {
         if (currentPage <= 0) return;
-        pageDragging = true;
         mode = FlipMode.LeftToRight;
         f = point;
 
@@ -338,17 +338,16 @@ public class NoteScript : MonoBehaviour
         if (enableShadowEffect) ShadowLTR.gameObject.SetActive(true);
         UpdateBookLTRToPoint(f, image);
     }
+
     public void ReleasePage()
     {
-        if (pageDragging)
-        {
-            pageDragging = false;
-            float distanceToLeft = Vector2.Distance(c, ebl);
-            float distanceToRight = Vector2.Distance(c, ebr);
-            TweenForward();
-        }
+        float distanceToLeft = Vector2.Distance(c, ebl);
+        float distanceToRight = Vector2.Distance(c, ebr);
+        TweenForward();
     }
+
     Coroutine currentCoroutine;
+
     public void UpdateSprites()
     {
         LeftNext.sprite = (currentPage > 0 && currentPage <= notePages.Length) ? notePages[currentPage - 1] : background;

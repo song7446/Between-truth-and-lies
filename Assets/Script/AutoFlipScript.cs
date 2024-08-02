@@ -6,6 +6,17 @@ using System.ComponentModel;
 [RequireComponent(typeof(NoteScript))]
 public class AutoFlipScript : MonoBehaviour
 {
+    public static AutoFlipScript instance;
+
+    private void Awake()
+    {
+        if (AutoFlipScript.instance == null)
+        {
+            AutoFlipScript.instance = this;
+
+        }
+    }
+
     public FlipMode Mode;
     public float PageFlipTime = 1;
     public float DelayBeforeStarting = 0;
@@ -23,19 +34,21 @@ public class AutoFlipScript : MonoBehaviour
         ControledNote.OnFlip.AddListener(new UnityEngine.Events.UnityAction(PageFlipped));
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonUp(0))
-        {
-            Mode = FlipMode.RightToLeft;
-            StartCoroutine(FlipToEnd());
-        }
-        else if (Input.GetMouseButtonUp(1))
-        {
-            Mode = FlipMode.LeftToRight;
-            StartCoroutine(FlipToEnd());
-        }
+        Debug.Log(isFlipping);
+    }
 
+    public void OpenNote()
+    {
+        Mode = FlipMode.RightToLeft;
+        StartCoroutine(FlipToEnd());
+    }
+
+    public void CloseNote()
+    {
+        Mode = FlipMode.LeftToRight;
+        StartCoroutine(FlipToEnd());
     }
 
     void PageFlipped()
