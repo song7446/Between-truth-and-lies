@@ -44,15 +44,20 @@ public class OpeningScript : MonoBehaviour
         StartCoroutine(FadeInOut.instance.textFadeOut(openingTxt));            
     }
 
+    // 오프닝 이미지 페이드아웃 스킵
     public void openingImageFadeOutCoroutineSkip()
     {
-        StopAllCoroutines();
+        StopCoroutine(FadeInOut.instance.imageFadeOut(obgsp));
+        StopCoroutine(FadeInOut.instance.textFadeOut(openingTxt));
         obgsp.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         openingTxt.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
     }
 
+    // 오프닝 텍스트 스킵
     public void openingScriptCoroutineSkip()
     {
+        // 이유 불명 코루틴 정지 실패 
+        //StopCoroutine(TextPrintScript.instance.TextPrint(delay, txt, openingTxt));
         StopAllCoroutines();
         openingTxt.text = txt;
     }

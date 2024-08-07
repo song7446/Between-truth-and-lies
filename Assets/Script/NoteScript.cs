@@ -102,12 +102,7 @@ public class NoteScript : MonoBehaviour
         Shadow.rectTransform.pivot = new Vector2(1, (pageWidth / 2) / shadowPageHeight);
 
         ShadowLTR.rectTransform.sizeDelta = new Vector2(pageWidth, shadowPageHeight);
-        ShadowLTR.rectTransform.pivot = new Vector2(0, (pageWidth / 2) / shadowPageHeight);
-
-        //float r = ClippingPlane.color.r;
-        //float g = ClippingPlane.color.g;
-        //float b = ClippingPlane.color.b;
-        //ClippingPlane.color = new Color(r, g, b, 0.0f);
+        ShadowLTR.rectTransform.pivot = new Vector2(0, (pageWidth / 2) / shadowPageHeight);       
     }
 
     private void CalcCurlCriticalPoints()

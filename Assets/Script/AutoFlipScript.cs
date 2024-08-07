@@ -36,7 +36,7 @@ public class AutoFlipScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(isFlipping);
+
     }
 
     public void OpenNote()

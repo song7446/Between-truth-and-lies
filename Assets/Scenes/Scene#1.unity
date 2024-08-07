@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openingTxt: {fileID: 1160909595}
-  openingBackGround: {fileID: 0}
+  openingBackGround: {fileID: 1443901398}
 --- !u!222 &1443901402
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1519,6 +1519,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 218567189}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: noteBool
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: NotePanel
       value: 

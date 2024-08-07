@@ -22,6 +22,7 @@ public class StoryManager : MonoBehaviour
     void Start()
     {
         OpeningScript.instance.openingScript();
+        NoteScript.instance.NotePanel.gameObject.SetActive(false);
     }
 
     void Update()
