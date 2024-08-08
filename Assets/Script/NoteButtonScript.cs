@@ -21,7 +21,7 @@ public class NoteButtonScript : MonoBehaviour
         {
             btnOnPanel.SetActive(false);
             AutoFlipScript.instance.CloseNote();
-            NoteScript.instance.NotePanel.gameObject.SetActive(false);
+            //NoteScript.instance.NotePanel.gameObject.SetActive(false);
             NoteScript.instance.noteBool = false;
         }
         else
@@ -37,6 +37,6 @@ public class NoteButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(AutoFlipScript.instance.isFlipping);
     }
 }

@@ -23,7 +23,8 @@ public class AutoFlipScript : MonoBehaviour
     public bool AutoStartFlip = true;
     public NoteScript ControledNote;
     public int AnimationFramesCount = 0;
-    bool isFlipping = false;
+
+    public bool isFlipping = false;
 
     // Use this for initialization
 
@@ -31,7 +32,6 @@ public class AutoFlipScript : MonoBehaviour
     {
         if (!ControledNote)
             ControledNote = GetComponent<NoteScript>();
-        ControledNote.OnFlip.AddListener(new UnityEngine.Events.UnityAction(PageFlipped));
     }
 
     private void Update()
@@ -51,11 +51,6 @@ public class AutoFlipScript : MonoBehaviour
         StartCoroutine(FlipToEnd());
     }
 
-    void PageFlipped()
-    {
-        isFlipping = false;
-    }
-
     IEnumerator FlipToEnd()
     {
         yield return new WaitForSeconds(DelayBeforeStarting);
@@ -67,24 +62,30 @@ public class AutoFlipScript : MonoBehaviour
 
         UnityEngine.UI.Image nextClip = ControledNote.NextPageClip;
 
-
         switch (Mode)
         {
             case FlipMode.RightToLeft:
+                isFlipping = true;
                 while (ControledNote.currentPage < ControledNote.TotalPageCount)
                 {
+                    Debug.Log(isFlipping);
                     StartCoroutine(FlipRTL(xc, xl, h, frameTime, dx, nextClip));
                     yield return new WaitForSeconds(0.25f);
                 }
                 break;
             case FlipMode.LeftToRight:
+                isFlipping = true;
                 while (ControledNote.currentPage > 0)
                 {
+                    Debug.Log(isFlipping);
                     StartCoroutine(FlipLTR(xc, xl, h, frameTime, dx, nextClip));
-                    yield return new WaitForSeconds(0.25f);
+                    yield return new WaitForSeconds(0.35f);
                 }
+                NoteScript.instance.NotePanel.gameObject.SetActive(false);
                 break;
         }
+        isFlipping = false;
+        Debug.Log(isFlipping);
     }
 
     IEnumerator FlipRTL(float xc, float xl, float h, float frameTime, float dx, UnityEngine.UI.Image image)
@@ -94,9 +95,9 @@ public class AutoFlipScript : MonoBehaviour
 
         ControledNote.DragRightPageToPoint(new Vector3(x, y, 0), image);
         ControledNote.ReleasePage(); 
-
         yield return null;
     }
+
     IEnumerator FlipLTR(float xc, float xl, float h, float frameTime, float dx, UnityEngine.UI.Image image)
     {
         float x = xc - xl;
@@ -106,7 +107,6 @@ public class AutoFlipScript : MonoBehaviour
 
         ControledNote.DragLeftPageToPoint(new Vector3(x, y, 0), image);
         ControledNote.ReleasePage();
-
-        yield return new WaitForSeconds(frameTime);
+        yield return null;
     }
 }

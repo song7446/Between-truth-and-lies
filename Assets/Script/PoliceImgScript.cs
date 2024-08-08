@@ -15,7 +15,7 @@ public class PoliceImgScript : MonoBehaviour
         }
     }
 
-    float fadeSpeed = 0.5f;
+    //float fadeSpeed = 0.5f;
     public bool policeImgOn = false;
     public bool fadeOutOnExit = true;
 
