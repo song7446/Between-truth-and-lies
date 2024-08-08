@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class StoryManager : MonoBehaviour
+public class StoryManager : MonoBehaviour, IPointerClickHandler
 {
     public static StoryManager instance;
 
@@ -11,6 +12,7 @@ public class StoryManager : MonoBehaviour
 
     public bool coroutineBool = false;
 
+
     private void Awake()
     {
         if (StoryManager.instance == null)
@@ -18,27 +20,24 @@ public class StoryManager : MonoBehaviour
             StoryManager.instance = this;
         }
     }
-
+    
     void Start()
     {
         OpeningScript.instance.openingScript();
         NoteScript.instance.NotePanel.gameObject.SetActive(false);
     }
 
-    void Update()
+    public void OnPointerClick(PointerEventData data)
     {
-        if (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space))
+        if (coroutineBool)
         {
-            if (coroutineBool)
-            {
-                coroutineSkip();
-                coroutineBool = false;
-            }
-            else
-            {
-                storyProceeding();
-                count++;
-            }
+            coroutineSkip();
+            coroutineBool = false;
+        }
+        else
+        {
+            storyProceeding();
+            count++;
         }
     }
 
