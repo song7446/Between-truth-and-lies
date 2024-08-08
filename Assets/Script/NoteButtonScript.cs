@@ -17,7 +17,11 @@ public class NoteButtonScript : MonoBehaviour
 
     void noteBtn_onClick()
     {
-        if (NoteScript.instance.noteBool)
+        if (AutoFlipScript.instance.isFlipping)
+        {
+
+        }
+        else if (NoteScript.instance.noteBool)
         {
             btnOnPanel.SetActive(false);
             AutoFlipScript.instance.CloseNote();
