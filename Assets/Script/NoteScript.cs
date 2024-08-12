@@ -2,11 +2,13 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Events;
+
 public enum FlipMode
 {
     RightToLeft,
     LeftToRight
 }
+
 [ExecuteInEditMode]
 public class NoteScript : MonoBehaviour
 {

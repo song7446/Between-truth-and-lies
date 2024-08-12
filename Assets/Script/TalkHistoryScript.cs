@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TalkScript : MonoBehaviour
+public class TalkHistoryScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static TalkHistoryScript instance;
+
+    private void Awake()
     {
-        
+        if (TalkHistoryScript.instance == null)
+        {
+            TalkHistoryScript.instance = this;
+
+        }
     }
 
-    // Update is called once per frame
+    public bool talkHisBool = false;
+    public GameObject talkHis;
+
+    void Start()
+    {
+        talkHis = GameObject.Find("TalkHistory");
+        talkHis.SetActive(false);
+    }
+
     void Update()
     {
-        
+
     }
 }
