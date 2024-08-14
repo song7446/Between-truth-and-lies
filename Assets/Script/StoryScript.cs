@@ -21,8 +21,8 @@ public class StoryScript : MonoBehaviour
     public Text scriptTxt;
     public Text talkName;
 
-    private string text;
-    private string speakerName;
+    public string text;
+    public string speakerName;
     private float delay = 0.05f;
 
     void Start()

@@ -27,6 +27,23 @@ public class StoryManager : MonoBehaviour, IPointerClickHandler
         NoteScript.instance.NotePanel.gameObject.SetActive(false);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (coroutineBool)
+            {
+                coroutineSkip();
+                coroutineBool = false;
+            }
+            else
+            {
+                storyProceeding();
+                count++;
+            }
+        }
+    }
+
     public void OnPointerClick(PointerEventData data)
     {
         if (coroutineBool)
@@ -53,6 +70,7 @@ public class StoryManager : MonoBehaviour, IPointerClickHandler
                 break;
             default:
                 StoryScript.instance.UpdateScript(storyCount);
+                TalkHistoryScript.instance.updateTalkHistory();
                 storyCount++;
                 break;
         }
