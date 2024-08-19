@@ -52,11 +52,13 @@ public class TalkHistoryScript : MonoBehaviour
             leftRight = Resources.Load<GameObject>("PreFab/TalkLogLeft");
         }
 
-        talkLog = GameObject.Instantiate<GameObject>(leftRight);
-
-        //TalkLogObjectScript.instance.Name.text = talkName;
-        //TalkLogObjectScript.instance.Text.text = talkText;
+        talkLog = GameObject.Instantiate<GameObject>(leftRight);      
 
         talkLog.transform.SetParent(parentObject.transform, false);
+
+        GameObject name = talkLog.transform.GetChild(0).gameObject;
+        name.GetComponent<Text>().text = talkName;
+        GameObject text = talkLog.transform.GetChild(1).gameObject;
+        text.GetComponent<Text>().text = talkText;
     }
 }
