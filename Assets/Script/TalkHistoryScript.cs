@@ -30,7 +30,7 @@ public class TalkHistoryScript : MonoBehaviour
     {
         talkHis = GameObject.Find("TalkHistory");
         talkHis.SetActive(false);
-        //parentObject = GameObject.Find("Content");
+        parentObject = talkHis.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -45,13 +45,18 @@ public class TalkHistoryScript : MonoBehaviour
 
         if (talkName == "¡÷¿Œ∞¯")
         {
-            leftRight = Resources.Load("TalkLogRight") as GameObject;
+            leftRight = Resources.Load<GameObject>("PreFab/TalkLogRight");
         }
         else
         {
-            leftRight = Resources.Load("TalkLogLeft") as GameObject;
+            leftRight = Resources.Load<GameObject>("PreFab/TalkLogLeft");
         }
-        talkLog = PrefabUtility.InstantiatePrefab(leftRight) as GameObject;
+
+        talkLog = GameObject.Instantiate<GameObject>(leftRight);
+
+        //TalkLogObjectScript.instance.Name.text = talkName;
+        //TalkLogObjectScript.instance.Text.text = talkText;
+
         talkLog.transform.SetParent(parentObject.transform, false);
     }
 }
