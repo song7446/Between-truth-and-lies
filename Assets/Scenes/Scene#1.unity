@@ -2244,6 +2244,46 @@ PrefabInstance:
       propertyPath: NotePanel
       value: 
       objectReference: {fileID: 1678776228}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0bf2281de97f0b647b8611965902e1a2, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[1]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[2]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[3]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[4]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[5]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[6]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[7]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[8]
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
     - target: {fileID: 5968968969767826725, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: m_Name
       value: Note

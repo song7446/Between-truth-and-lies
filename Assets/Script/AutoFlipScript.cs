@@ -66,7 +66,7 @@ public class AutoFlipScript : MonoBehaviour
         {
             case FlipMode.RightToLeft:
                 isFlipping = true;
-                while (ControledNote.currentPage < ControledNote.TotalPageCount)
+                while (ControledNote.currentPage < ControledNote.TotalPageCount-2)
                 {
                     Debug.Log(isFlipping);
                     StartCoroutine(FlipRTL(xc, xl, h, frameTime, dx, nextClip));
