@@ -21,15 +21,19 @@ public class TalkHistoryButtonScript : MonoBehaviour
 
     void talkHisBtn_onClick()
     {
-        if (TalkHistoryScript.instance.talkHisBool)
+        if (TalkHistoryChapterScript.instance.talkHisChaBool || TalkHistoryScript.instance.talkHisBool)
         {
-            TalkHistoryScript.instance.talkHisBool = false;
+            TalkHistoryChapterScript.instance.talkHisCha.SetActive(false);
+            TalkHistoryChapterScript.instance.talkHisChaBool = false;
+
             TalkHistoryScript.instance.talkHis.SetActive(false);
+            TalkHistoryScript.instance.talkHisBool = false;
+            TalkHistoryScript.instance.backBtn.gameObject.SetActive(false);
         }
         else
         {
-            TalkHistoryScript.instance.talkHisBool = true;
-            TalkHistoryScript.instance.talkHis.SetActive(true);
+            TalkHistoryChapterScript.instance.talkHisCha.SetActive(true);
+            TalkHistoryChapterScript.instance.talkHisChaBool = true;
         }
         Debug.Log("대화 기록 버튼 클릭");
     }

@@ -26,16 +26,16 @@ public class TalkHistoryScript : MonoBehaviour
     public GameObject talkLog;
     public GameObject parentObject;
 
+    public Button backBtn;
+
     void Start()
     {
         talkHis = GameObject.Find("TalkHistory");
         talkHis.SetActive(false);
         parentObject = talkHis.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
-    }
 
-    void Update()
-    {
-
+        backBtn.onClick.AddListener(backBtn_onClick);
+        backBtn.gameObject.SetActive(false);
     }
 
     public void updateTalkHistory()
@@ -60,5 +60,13 @@ public class TalkHistoryScript : MonoBehaviour
         name.GetComponent<Text>().text = talkName;
         GameObject text = talkLog.transform.GetChild(1).gameObject;
         text.GetComponent<Text>().text = talkText;
+    }
+
+    void backBtn_onClick()
+    {
+        TalkHistoryScript.instance.talkHisBool = false;
+        TalkHistoryScript.instance.talkHis.SetActive(false);
+        TalkHistoryChapterScript.instance.talkHisCha.SetActive(true);
+        backBtn.gameObject.SetActive(false);
     }
 }
