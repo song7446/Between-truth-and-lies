@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class Scene1Script : MonoBehaviour
 {
     public static Scene1Script instance;
-
+    public bool storyEnd = false;
     private void Awake()
     {
         if (Scene1Script.instance == null)
@@ -40,7 +40,7 @@ public class Scene1Script : MonoBehaviour
         }
         catch (IndexOutOfRangeException e)
         {
-
+            storyEnd = true;
         }
 
         return scriptText;
@@ -63,7 +63,7 @@ public class Scene1Script : MonoBehaviour
         }
         catch (IndexOutOfRangeException e)
         {
-
+            storyEnd = true;
         }
 
         return name;

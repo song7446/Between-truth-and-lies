@@ -2545,6 +2545,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 218567190}
     m_Modifications:
+    - target: {fileID: 1242404341244213322, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8d5fb10f29829514d95c832a2c9c421b, type: 3}
     - target: {fileID: 3807024002176703459, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2638,6 +2642,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1678776228}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c47abcf3fb3d12408efe3073b2e379f, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.size
       value: 8
       objectReference: {fileID: 0}
@@ -2648,31 +2656,31 @@ PrefabInstance:
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.data[1]
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.data[2]
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.data[3]
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.data[4]
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.data[5]
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.data[6]
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.data[7]
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.data[8]
       value: 
@@ -2701,6 +2709,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6978320031006147040, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: beeba376e32f8764fb40ec728a372d55, type: 3}
     - target: {fileID: 8029679825245300332, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

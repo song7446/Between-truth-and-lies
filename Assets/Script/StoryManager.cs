@@ -39,7 +39,10 @@ public class StoryManager : MonoBehaviour, IPointerClickHandler
             else
             {
                 storyProceeding();
-                count++;
+                if (Scene1Script.instance.storyEnd == false)
+                {
+                    count++;
+                }                
             }
         }
     }
