@@ -1485,6 +1485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944bbb987fe79e64fbcf7a23159a8b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storyEnd: 0
 --- !u!4 &1218227309
 Transform:
   m_ObjectHideFlags: 0
@@ -2647,7 +2648,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 3c47abcf3fb3d12408efe3073b2e379f, type: 3}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.data[0]
@@ -2684,7 +2685,23 @@ PrefabInstance:
     - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: notePages.Array.data[8]
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[10]
+      value: 
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[11]
+      value: 
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
+    - target: {fileID: 4529049097150546387, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
+      propertyPath: notePages.Array.data[12]
+      value: 
+      objectReference: {fileID: 21300000, guid: cc62b680bb3f4f54ea8330b255c25d86, type: 3}
     - target: {fileID: 5129870711461692575, guid: 4a8f1692090581a4fa1825d26a6d17a6, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -38,9 +38,8 @@ public class NoteButtonScript : MonoBehaviour
         Debug.Log("노트 버튼 클릭");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Debug.Log(AutoFlipScript.instance.isFlipping);
+
     }
 }

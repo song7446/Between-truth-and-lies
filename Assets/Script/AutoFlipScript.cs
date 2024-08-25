@@ -26,17 +26,11 @@ public class AutoFlipScript : MonoBehaviour
 
     public bool isFlipping = false;
 
-    // Use this for initialization
 
     void Start()
     {
         if (!ControledNote)
             ControledNote = GetComponent<NoteScript>();
-    }
-
-    private void Update()
-    {
-
     }
 
     public void OpenNote()
@@ -104,7 +98,6 @@ public class AutoFlipScript : MonoBehaviour
         float y = (-h / (xl * xl)) * (x - xc) * (x - xc);
 
         ControledNote.currentPage = 2;
-
         ControledNote.DragLeftPageToPoint(new Vector3(x, y, 0), image);
         ControledNote.ReleasePage();
         yield return null;
