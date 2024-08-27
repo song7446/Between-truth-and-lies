@@ -1,9 +1,11 @@
+using Unity.Burst.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
-public class TalkLogObjectScript : MonoBehaviour
+public class TalkLogObjectScript : MonoBehaviour, IPointerClickHandler
 {
     public static TalkLogObjectScript instance;
 
@@ -18,20 +20,23 @@ public class TalkLogObjectScript : MonoBehaviour
 
     public Text Name;
     public Text Text;
-    public Button useTextBtn;
 
     private void Start()
     {
-        useTextBtn.onClick.AddListener(useTextBtn_onClick);
+
     }
 
-    public void useTextBtn_onClick()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("텍스트 버튼 클릭");
-        Vector2 mousePosition = Input.mousePosition;
-        TextUseButtonScript.instance.textUseBtn.transform.position = mousePosition;
-        TextUseButtonScript.instance.textUseBtn.gameObject.SetActive(true);
-        Name.color = Color.red;
-        Text.color = Color.red;
+        Debug.Log("ㅇㅁㄻㅇㄴㄹ");
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            Debug.Log("텍스트 버튼 클릭");
+            Vector2 mousePosition = Input.mousePosition;
+            TextUseButtonScript.instance.textUseBtn.transform.position = mousePosition;
+            TextUseButtonScript.instance.textUseBtn.gameObject.SetActive(true);
+            Name.color = Color.red;
+            Text.color = Color.red;
+        }
     }
 }

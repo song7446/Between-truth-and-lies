@@ -26,7 +26,8 @@ public class TextUseButtonScript : MonoBehaviour
 
     void textUseBtn_onClick()
     {
-
+        Debug.Log("텍스트 사용 버튼 클릭");
+        textUseBtn.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
