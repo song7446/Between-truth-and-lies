@@ -16,7 +16,10 @@ public class TextUseButtonScript : MonoBehaviour
         }
     }
 
-    public Button textUseBtn; 
+    public Button textUseBtn;
+    public Text talkName;
+    public Text talkText;
+    public GameObject talkObj;
 
     void Start()
     {
@@ -27,12 +30,19 @@ public class TextUseButtonScript : MonoBehaviour
     void textUseBtn_onClick()
     {
         Debug.Log("텍스트 사용 버튼 클릭");
+        talkName = talkObj.transform.GetChild(0).gameObject.GetComponent<Text>();
+        Debug.Log(talkName.text);
+        talkText = talkObj.transform.GetChild(1).gameObject.GetComponent<Text>();
+        Debug.Log(talkText.text);
+
+        talkName.color = Color.red;
+        talkText.color = Color.red;
+        
         textUseBtn.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void getTalkObj(GameObject Obj)
     {
-        
+        talkObj = Obj;
     }
 }

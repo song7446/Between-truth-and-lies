@@ -18,6 +18,8 @@ public class TalkLogObjectScript : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public GameObject talkLogObj;
+
     public Text Name;
     public Text Text;
 
@@ -28,15 +30,13 @@ public class TalkLogObjectScript : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("ㅇㅁㄻㅇㄴㄹ");
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            Debug.Log("텍스트 버튼 클릭");
             Vector2 mousePosition = Input.mousePosition;
             TextUseButtonScript.instance.textUseBtn.transform.position = mousePosition;
             TextUseButtonScript.instance.textUseBtn.gameObject.SetActive(true);
-            Name.color = Color.red;
-            Text.color = Color.red;
+            talkLogObj = Name.transform.parent.gameObject;
+            TextUseButtonScript.instance.getTalkObj(talkLogObj);
         }
     }
 }

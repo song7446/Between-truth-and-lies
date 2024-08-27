@@ -19,6 +19,7 @@ public class TalkHistoryScript : MonoBehaviour
 
     public bool talkHisBool = false;
     public GameObject talkHis;
+
     public string talkText;
     public string talkName;
 
@@ -27,6 +28,8 @@ public class TalkHistoryScript : MonoBehaviour
     public GameObject parentObject;
 
     public Button backBtn;
+
+    int index = 1;
 
     void Start()
     {
@@ -60,6 +63,9 @@ public class TalkHistoryScript : MonoBehaviour
         name.GetComponent<Text>().text = talkName;
         GameObject text = talkLog.transform.GetChild(1).gameObject;
         text.GetComponent<Text>().text = talkText;
+
+        talkLog.name = "TalkLog " + index;
+        index++;
     }
 
     void backBtn_onClick()

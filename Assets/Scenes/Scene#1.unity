@@ -1432,6 +1432,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textUseBtn: {fileID: 1028088004}
+  talkName: {fileID: 0}
+  talkText: {fileID: 0}
+  talkObj: {fileID: 0}
 --- !u!114 &1028088004
 MonoBehaviour:
   m_ObjectHideFlags: 0
