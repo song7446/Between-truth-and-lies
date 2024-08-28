@@ -16,7 +16,9 @@ public class TextUseButtonScript : MonoBehaviour
         }
     }
 
+    public GameObject textUseBtnObj;
     public Button textUseBtn;
+    public Button textUnUseBtn;
     public Text talkName;
     public Text talkText;
     public GameObject talkObj;
@@ -24,7 +26,9 @@ public class TextUseButtonScript : MonoBehaviour
     void Start()
     {
         textUseBtn.onClick.AddListener(textUseBtn_onClick);
+        textUnUseBtn.onClick.AddListener(textUnUseBtn_onClick);
         textUseBtn.gameObject.SetActive(false);
+        textUnUseBtn.gameObject.SetActive(false);
     }
 
     void textUseBtn_onClick()
@@ -39,10 +43,27 @@ public class TextUseButtonScript : MonoBehaviour
         talkText.color = Color.red;
         
         textUseBtn.gameObject.SetActive(false);
+        textUnUseBtn.gameObject.SetActive(false);
     }
 
     public void getTalkObj(GameObject Obj)
     {
         talkObj = Obj;
+    }
+
+    void textUnUseBtn_onClick()
+    {
+        Debug.Log("텍스트 사용 취소 버튼 클릭");
+
+        talkName = talkObj.transform.GetChild(0).gameObject.GetComponent<Text>();
+        Debug.Log(talkName.text);
+        talkText = talkObj.transform.GetChild(1).gameObject.GetComponent<Text>();
+        Debug.Log(talkText.text);
+
+        talkName.color = Color.white;
+        talkText.color = Color.white;
+
+        textUseBtn.gameObject.SetActive(false);
+        textUnUseBtn.gameObject.SetActive(false);
     }
 }

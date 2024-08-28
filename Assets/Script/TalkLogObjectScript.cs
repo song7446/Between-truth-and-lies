@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class TalkLogObjectScript : MonoBehaviour, IPointerClickHandler
+public class TalkLogObjectScript : MonoBehaviour, IPointerDownHandler
 {
     public static TalkLogObjectScript instance;
 
@@ -28,15 +28,31 @@ public class TalkLogObjectScript : MonoBehaviour, IPointerClickHandler
 
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             Vector2 mousePosition = Input.mousePosition;
-            TextUseButtonScript.instance.textUseBtn.transform.position = mousePosition;
-            TextUseButtonScript.instance.textUseBtn.gameObject.SetActive(true);
+            TextUseButtonScript.instance.textUseBtnObj.transform.position = mousePosition;
+         
             talkLogObj = Name.transform.parent.gameObject;
             TextUseButtonScript.instance.getTalkObj(talkLogObj);
+
+            if (Name.color==Color.white)
+            {
+                TextUseButtonScript.instance.textUseBtn.gameObject.SetActive(true);
+                TextUseButtonScript.instance.textUnUseBtn.gameObject.SetActive(false);
+            }
+            else if(Name.color==Color.red) 
+            {
+                TextUseButtonScript.instance.textUnUseBtn.gameObject.SetActive(true);
+                TextUseButtonScript.instance.textUseBtn.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            TextUseButtonScript.instance.textUseBtn.gameObject.SetActive(false);
+            TextUseButtonScript.instance.textUnUseBtn.gameObject.SetActive(false);
         }
     }
 }

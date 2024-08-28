@@ -32,12 +32,6 @@ public class TalkHistoryChapterScript : MonoBehaviour
         talkHisCha.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void talkHisChaBtn1_onClick()
     {
         Debug.Log("1번 버튼 클릭");
