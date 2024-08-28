@@ -38,7 +38,7 @@ public class Scene1Script : MonoBehaviour
         {
             scriptText = storyScript[num];
         }
-        catch (IndexOutOfRangeException e)
+        catch (IndexOutOfRangeException)
         {
             storyEnd = true;
         }
@@ -61,7 +61,7 @@ public class Scene1Script : MonoBehaviour
         {
             name = nameScript[num];
         }
-        catch (IndexOutOfRangeException e)
+        catch (IndexOutOfRangeException)
         {
             storyEnd = true;
         }

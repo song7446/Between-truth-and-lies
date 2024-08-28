@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class NoteButtonScript : MonoBehaviour
 {
+    public static NoteButtonScript instance;
+
+    private void Awake()
+    {
+        if (NoteButtonScript.instance == null)
+        {
+            NoteButtonScript.instance = this;
+        }
+    }
+
     public Button noteBtn;
     public GameObject btnOnPanel;
 
@@ -13,6 +23,8 @@ public class NoteButtonScript : MonoBehaviour
         noteBtn.onClick.AddListener(noteBtn_onClick);
         btnOnPanel = GameObject.Find("ButtonOnPanel");
         btnOnPanel.SetActive(false);
+
+        noteBtn.gameObject.SetActive(false);
     }
 
     void noteBtn_onClick()
@@ -24,6 +36,7 @@ public class NoteButtonScript : MonoBehaviour
         else if (NoteScript.instance.noteBool)
         {
             btnOnPanel.SetActive(false);
+            NoteTextScript.instance.noteTextObj.SetActive(false);
             AutoFlipScript.instance.CloseNote();
             //NoteScript.instance.NotePanel.gameObject.SetActive(false);
             NoteScript.instance.noteBool = false;
@@ -31,6 +44,7 @@ public class NoteButtonScript : MonoBehaviour
         else
         {
             btnOnPanel.SetActive(true);
+            NoteTextScript.instance.noteTextObj.SetActive(true);
             NoteScript.instance.NotePanel.gameObject.SetActive(true);
             NoteScript.instance.noteBool = true;
             AutoFlipScript.instance.OpenNote();

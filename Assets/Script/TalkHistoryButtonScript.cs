@@ -6,11 +6,23 @@ using UnityEngine.UI;
 
 public class TalkHistoryButtonScript : MonoBehaviour
 {
+    public static TalkHistoryButtonScript Instance;
+
+    private void Awake()
+    {
+        if (TalkHistoryButtonScript.Instance == null)
+        {
+            TalkHistoryButtonScript.Instance = this;
+        }
+    }
+
     public Button talkHisBtn;
 
     void Start()
     {
         talkHisBtn.onClick.AddListener(talkHisBtn_onClick);
+
+        talkHisBtn.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

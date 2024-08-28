@@ -67,6 +67,8 @@ public class StoryManager : MonoBehaviour, IPointerClickHandler
         {
             case 0:
                 OpeningScript.instance.openingImageFadeOut();
+                NoteButtonScript.instance.noteBtn.gameObject.SetActive(true);
+                TalkHistoryButtonScript.Instance.talkHisBtn.gameObject.SetActive(true);
                 break;
             case 2:
                 PoliceImgScript.instance.policeImageFadeIn();
