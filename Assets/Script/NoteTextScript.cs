@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoteTextScript : MonoBehaviour
 {
@@ -13,16 +14,9 @@ public class NoteTextScript : MonoBehaviour
             NoteTextScript.instance = this;
         }
     }
-    public GameObject noteTextObj;
 
-    void Start()
-    {
-        noteTextObj.SetActive(false);
-    }
+    public GameObject textObj;
 
+    public Text impText;
 
-    void Update()
-    {
-        
-    }
 }

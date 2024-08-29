@@ -33,7 +33,7 @@ public class TextUseButtonScript : MonoBehaviour
 
     void textUseBtn_onClick()
     {
-        Debug.Log("텍스트 사용 버튼 클릭");
+        Debug.Log("텍스트 사용 버튼 클릭");        
         talkName = talkObj.transform.GetChild(0).gameObject.GetComponent<Text>();
         Debug.Log(talkName.text);
         talkText = talkObj.transform.GetChild(1).gameObject.GetComponent<Text>();
@@ -44,6 +44,8 @@ public class TextUseButtonScript : MonoBehaviour
         
         textUseBtn.gameObject.SetActive(false);
         textUnUseBtn.gameObject.SetActive(false);
+
+        NoteTextObjScript.instance.updateNoteText(talkObj);
     }
 
     public void getTalkObj(GameObject Obj)

@@ -36,15 +36,13 @@ public class NoteButtonScript : MonoBehaviour
         else if (NoteScript.instance.noteBool)
         {
             btnOnPanel.SetActive(false);
-            NoteTextScript.instance.noteTextObj.SetActive(false);
+            NoteTextObjScript.instance.noteTxtObj.SetActive(false);
             AutoFlipScript.instance.CloseNote();
-            //NoteScript.instance.NotePanel.gameObject.SetActive(false);
             NoteScript.instance.noteBool = false;
         }
         else
         {
-            btnOnPanel.SetActive(true);
-            NoteTextScript.instance.noteTextObj.SetActive(true);
+            btnOnPanel.SetActive(true);            
             NoteScript.instance.NotePanel.gameObject.SetActive(true);
             NoteScript.instance.noteBool = true;
             AutoFlipScript.instance.OpenNote();

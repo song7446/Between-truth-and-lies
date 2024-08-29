@@ -66,6 +66,8 @@ public class AutoFlipScript : MonoBehaviour
                     StartCoroutine(FlipRTL(xc, xl, h, frameTime, dx, nextClip));
                     yield return new WaitForSeconds(0.25f);
                 }
+                NoteTextObjScript.instance.noteTxtObj.SetActive(true);
+
                 break;
             case FlipMode.LeftToRight:
                 isFlipping = true;
