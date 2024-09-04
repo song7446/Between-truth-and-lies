@@ -39,6 +39,7 @@ public class NoteButtonScript : MonoBehaviour
             NoteTextObjScript.instance.noteTxtObj.SetActive(false);
             AutoFlipScript.instance.CloseNote();
             NoteScript.instance.noteBool = false;
+            CombinationButtonScript.Instance.comBtn.gameObject.SetActive(false);
         }
         else
         {
@@ -46,6 +47,7 @@ public class NoteButtonScript : MonoBehaviour
             NoteScript.instance.NotePanel.gameObject.SetActive(true);
             NoteScript.instance.noteBool = true;
             AutoFlipScript.instance.OpenNote();
+            CombinationButtonScript.Instance.comBtn.gameObject.SetActive(true);           
         }
         Debug.Log("노트 버튼 클릭");
     }
