@@ -31,6 +31,15 @@ public class TextUseButtonScript : MonoBehaviour
         textUnUseBtn.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (StoryManager.instance.coroutineBool==false)
+        {
+            FalseTextUseScript.instance.falTxtObj.SetActive(false);
+            FalseTextUseScript.instance.falTxtObj.GetComponent<Text>().color = new Color(255,0,0,255);
+        }
+    }
+
     void textUseBtn_onClick()
     {
         Debug.Log("텍스트 사용 버튼 클릭");        
@@ -39,13 +48,21 @@ public class TextUseButtonScript : MonoBehaviour
         talkText = talkObj.transform.GetChild(1).gameObject.GetComponent<Text>();
         Debug.Log(talkText.text);
 
-        talkName.color = Color.red;
-        talkText.color = Color.red;
+        if (NoteTextObjScript.instance.updateNoteText(talkObj))
+        {
+            talkName.color = Color.red;
+            talkText.color = Color.red;
+        }
+        else
+        {
+            Vector2 mousePosition = Input.mousePosition;
+            FalseTextUseScript.instance.falTxtObj.transform.position = mousePosition;
+            FalseTextUseScript.instance.falTxtObj.SetActive(true);
+            StartCoroutine(FadeInOut.instance.textFadeOut(FalseTextUseScript.instance.falTxtObj.GetComponent<Text>()));            
+        }
         
         textUseBtn.gameObject.SetActive(false);
-        textUnUseBtn.gameObject.SetActive(false);
-
-        NoteTextObjScript.instance.updateNoteText(talkObj);
+        textUnUseBtn.gameObject.SetActive(false);        
     }
 
     public void getTalkObj(GameObject Obj)
@@ -67,5 +84,7 @@ public class TextUseButtonScript : MonoBehaviour
 
         textUseBtn.gameObject.SetActive(false);
         textUnUseBtn.gameObject.SetActive(false);
+
+        NoteTextObjScript.instance.deleteNoteText(talkObj);
     }
 }
