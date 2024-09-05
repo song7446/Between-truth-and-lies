@@ -22,6 +22,7 @@ public class TextUseButtonScript : MonoBehaviour
     public Text talkName;
     public Text talkText;
     public GameObject talkObj;
+    int count = 1;
 
     void Start()
     {
@@ -37,6 +38,12 @@ public class TextUseButtonScript : MonoBehaviour
         {
             FalseTextUseScript.instance.falTxtObj.SetActive(false);
             FalseTextUseScript.instance.falTxtObj.GetComponent<Text>().color = new Color(255,0,0,255);
+
+            TooManyTextUseScript.instance.tooManyTextUseObj.SetActive(false);
+            TooManyTextUseScript.instance.tooManyTextUseObj.GetComponent<Text>().color = new Color(255, 0, 0, 255);
+
+            AnswerResultScript.instance.worObj.SetActive(false);
+            AnswerResultScript.instance.worObj.GetComponent<Text>().color = new Color(255, 0, 0, 255);
         }
     }
 
@@ -48,18 +55,30 @@ public class TextUseButtonScript : MonoBehaviour
         talkText = talkObj.transform.GetChild(1).gameObject.GetComponent<Text>();
         Debug.Log(talkText.text);
 
-        if (NoteTextObjScript.instance.updateNoteText(talkObj))
+        if (count < 5)
         {
-            talkName.color = Color.red;
-            talkText.color = Color.red;
+            if (NoteTextObjScript.instance.updateNoteText(talkObj))
+            {
+                talkName.color = Color.red;
+                talkText.color = Color.red;
+                count++;
+            }
+            else
+            {
+                Vector2 mousePosition = Input.mousePosition;
+                FalseTextUseScript.instance.falTxtObj.transform.position = mousePosition;
+                FalseTextUseScript.instance.falTxtObj.SetActive(true);
+                StartCoroutine(FadeInOut.instance.textFadeOut(FalseTextUseScript.instance.falTxtObj.GetComponent<Text>()));
+            }
         }
         else
         {
             Vector2 mousePosition = Input.mousePosition;
-            FalseTextUseScript.instance.falTxtObj.transform.position = mousePosition;
-            FalseTextUseScript.instance.falTxtObj.SetActive(true);
-            StartCoroutine(FadeInOut.instance.textFadeOut(FalseTextUseScript.instance.falTxtObj.GetComponent<Text>()));            
+            TooManyTextUseScript.instance.tooManyTextUseObj.transform.position = mousePosition;
+            TooManyTextUseScript.instance.tooManyTextUseObj.SetActive(true);
+            StartCoroutine(FadeInOut.instance.textFadeOut(TooManyTextUseScript.instance.tooManyTextUseObj.GetComponent<Text>()));
         }
+
         
         textUseBtn.gameObject.SetActive(false);
         textUnUseBtn.gameObject.SetActive(false);        
@@ -86,5 +105,6 @@ public class TextUseButtonScript : MonoBehaviour
         textUnUseBtn.gameObject.SetActive(false);
 
         NoteTextObjScript.instance.deleteNoteText(talkObj);
+        count--;
     }
 }

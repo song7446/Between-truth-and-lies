@@ -15,7 +15,7 @@ public class NoteTextObjScript : MonoBehaviour
         }
     }
 
-    Dictionary<string, string> noteWrites = new Dictionary<string, string>()
+    public Dictionary<string, string> noteWrites = new Dictionary<string, string>()
     {
         { "이 집에 살던 딸이 아버지를 살해했습니다.","딸이 아버지를 살해함" },
         { "그게 딸 본인이 했습니다.","딸 본인이 직접 신고함" },
