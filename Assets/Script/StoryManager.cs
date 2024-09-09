@@ -29,20 +29,27 @@ public class StoryManager : MonoBehaviour, IPointerClickHandler
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (TalkHistoryScript.instance.talkHisBool || NoteScript.instance.noteBool || TalkHistoryChapterScript.instance.talkHisChaBool)
         {
-            if (coroutineBool)
+            
+        }
+        else
+        {
+            if (Input.GetKeyUp(KeyCode.Space))
             {
-                coroutineSkip();
-                coroutineBool = false;
-            }
-            else
-            {               
-                if (Scene1Script.instance.storyEnd == false)
+                if (coroutineBool)
                 {
-                    storyProceeding();
-                    count++;
-                }                
+                    coroutineSkip();
+                    coroutineBool = false;
+                }
+                else
+                {
+                    if (Scene1Script.instance.storyEnd == false)
+                    {
+                        storyProceeding();
+                        count++;
+                    }
+                }
             }
         }
     }
