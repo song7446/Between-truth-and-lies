@@ -27,7 +27,7 @@ public class NoteButtonScript : MonoBehaviour
         noteBtn.gameObject.SetActive(false);
     }
 
-    void noteBtn_onClick()
+    public void noteBtn_onClick()
     {
         if (AutoFlipScript.instance.isFlipping)
         {

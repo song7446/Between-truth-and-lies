@@ -40,7 +40,19 @@ public class Scene1Script : MonoBehaviour
         }
         catch (IndexOutOfRangeException)
         {
-            Debug.Log("³¡");
+            if (CombinationButtonScript.Instance.ansCheckbool)
+            {
+                OpeningScript.instance.openingTxt.text = "";
+                OpeningScript.instance.obgsp.color = new Color(0,0,0,0);
+                OpeningScript.instance.openingBackGround.SetActive(true);
+                StartCoroutine(FadeInOut.instance.imageFadeIn(OpeningScript.instance.obgsp));
+            }
+            else
+            {
+                EndingScript.instance.endFrontGround.SetActive(true);
+                StartCoroutine(FadeInOut.instance.imageFadeIn(EndingScript.instance.endFrontGround.GetComponent<Image>()));
+                StartCoroutine(FadeInOut.instance.textFadeIn(EndingScript.instance.endingText));
+            }
             storyEnd = true;
         }
 

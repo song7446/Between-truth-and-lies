@@ -8,7 +8,7 @@ public class OpeningScript : MonoBehaviour
 
     public Text openingTxt;
 
-    Image obgsp;
+    public Image obgsp;
 
     private string txt;
     private float delay;
@@ -36,7 +36,7 @@ public class OpeningScript : MonoBehaviour
     public void openingImageFadeOut()
     {
         // 프론트 그라운드 오브젝트
-        openingBackGround = GameObject.Find("FrontGround");
+        openingBackGround = GameObject.Find("OpeningFrontGround");
         obgsp = openingBackGround.GetComponent<Image>();
 
         // 프론트 그라운드 이미지 텍스트 페이드 아웃

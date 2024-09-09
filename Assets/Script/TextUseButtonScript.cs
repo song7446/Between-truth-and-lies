@@ -24,6 +24,9 @@ public class TextUseButtonScript : MonoBehaviour
     public GameObject talkObj;
     int count = 1;
 
+    public bool falseTextUseBool;
+    public bool tooManyTextUseBool;
+
     void Start()
     {
         textUseBtn.onClick.AddListener(textUseBtn_onClick);

@@ -19,6 +19,9 @@ public class CombinationButtonScript : MonoBehaviour
     // 조합 버튼
     public Button comBtn;
 
+    // 조합 버튼 상태
+    public bool comBtnBool;
+
     // 노트 왼쪽 페이지 오브젝트
     public GameObject noteLeftTextObj;
 
@@ -30,6 +33,12 @@ public class CombinationButtonScript : MonoBehaviour
 
     // 실제 활성화되는 노트 텍스트 오브젝트 
     public GameObject noteTextObj;
+
+    // 정답이라고 알려주는 텍스트 상태
+    public bool correctAnswerBool;
+
+    // 오답이라고 알려주는 텍스트 상태
+    public bool worngAnswerBool;
 
     void Start()
     {
@@ -194,11 +203,13 @@ public class CombinationButtonScript : MonoBehaviour
             if (i == 0)
             {
                 // 오답
+                ansCheckbool = false;
                 return false;
             }
         }
 
         // 그게 아니면 정답
+        ansCheckbool = true;
         return true;
     }
 }
