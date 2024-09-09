@@ -40,6 +40,7 @@ public class Scene1Script : MonoBehaviour
         }
         catch (IndexOutOfRangeException)
         {
+            Debug.Log("³¡");
             storyEnd = true;
         }
 

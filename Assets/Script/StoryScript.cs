@@ -34,16 +34,19 @@ public class StoryScript : MonoBehaviour
 
     public void UpdateScript(int num)
     {
-        // 스토리 텍스트
-        text = Scene1Script.instance.ScriptCollection(num);
-        // 화자 이름
-        speakerName = Scene1Script.instance.NameCollection(num);
+        if (Scene1Script.instance.ScriptCollection(num)!="")
+        {
+            // 스토리 텍스트
+            text = Scene1Script.instance.ScriptCollection(num);
+            // 화자 이름
+            speakerName = Scene1Script.instance.NameCollection(num);
 
-        this.talkName.text = speakerName;
-        scriptTxt.text = "";
+            this.talkName.text = speakerName;
+            scriptTxt.text = "";
 
-        // 텍스트 한글자씩 출력
-        StartCoroutine(TextPrintScript.instance.TextPrint(delay, text, scriptTxt));
+            // 텍스트 한글자씩 출력
+            StartCoroutine(TextPrintScript.instance.TextPrint(delay, text, scriptTxt));
+        }
     }
 
     public void scriptCoroutineSkip()

@@ -1945,14 +1945,14 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 100
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC911\uC694\uD558\uC9C0 \uC54A\uC740 \uB0B4\uC6A9\uC774 \uD3EC\uD568\uB418\uC5B4\uC788\uB294
-    \uAC83 \uAC19\uB2E4 "
+  m_Text: "\uD544\uC694\uD55C \uB0B4\uC6A9\uC774 \n\uBAA8\uB450 \uBAA8\uC774\uC9C0
+    \uC54A\uC558\uB2E4 "
 --- !u!222 &1029481265
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3347,6 +3347,7 @@ GameObject:
   - component: {fileID: 1872403097}
   - component: {fileID: 1872403100}
   - component: {fileID: 1872403099}
+  - component: {fileID: 1872403101}
   m_Layer: 5
   m_Name: TooManyTextUseObj
   m_TagString: Untagged
@@ -3415,6 +3416,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872403096}
   m_CullTransparentMesh: 1
+--- !u!114 &1872403101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872403096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2062fcac71113334cade502bfa42a942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooManyTextUseObj: {fileID: 1872403096}
 --- !u!1 &1914058832
 GameObject:
   m_ObjectHideFlags: 0

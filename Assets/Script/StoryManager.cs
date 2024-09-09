@@ -37,10 +37,10 @@ public class StoryManager : MonoBehaviour, IPointerClickHandler
                 coroutineBool = false;
             }
             else
-            {
-                storyProceeding();
+            {               
                 if (Scene1Script.instance.storyEnd == false)
                 {
+                    storyProceeding();
                     count++;
                 }                
             }
@@ -56,8 +56,11 @@ public class StoryManager : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            storyProceeding();
-            count++;
+            if (Scene1Script.instance.storyEnd == false)
+            {
+                storyProceeding();
+                count++;
+            }
         }
     }
 
@@ -75,7 +78,7 @@ public class StoryManager : MonoBehaviour, IPointerClickHandler
                 break;
             default:
                 StoryScript.instance.UpdateScript(storyCount);
-                TalkHistoryScript.instance.updateTalkHistory();
+                TalkHistoryScript.instance.updateTalkHistory(storyCount);
                 storyCount++;
                 break;
         }

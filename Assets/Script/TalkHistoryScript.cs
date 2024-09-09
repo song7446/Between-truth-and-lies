@@ -41,31 +41,36 @@ public class TalkHistoryScript : MonoBehaviour
         backBtn.gameObject.SetActive(false);
     }
 
-    public void updateTalkHistory()
+    public void updateTalkHistory(int num)
     {
-        talkName = StoryScript.instance.speakerName;
-        talkText = StoryScript.instance.text;
-
-        if (talkName == "주인공")
+        if (Scene1Script.instance.ScriptCollection(num) != "")
         {
-            leftRight = Resources.Load<GameObject>("PreFab/TalkLogRight");
-        }
-        else
-        {
-            leftRight = Resources.Load<GameObject>("PreFab/TalkLogLeft");
-        }
+            // 스토리 텍스트
+            talkText = Scene1Script.instance.ScriptCollection(num);
+            // 화자 이름
+            talkName = Scene1Script.instance.NameCollection(num);
 
-        talkLog = GameObject.Instantiate<GameObject>(leftRight);      
+            if (talkName == "주인공")
+            {
+                leftRight = Resources.Load<GameObject>("PreFab/TalkLogRight");
+            }
+            else
+            {
+                leftRight = Resources.Load<GameObject>("PreFab/TalkLogLeft");
+            }
 
-        talkLog.transform.SetParent(parentObject.transform, false);
+            talkLog = GameObject.Instantiate<GameObject>(leftRight);
 
-        GameObject name = talkLog.transform.GetChild(0).gameObject;
-        name.GetComponent<Text>().text = talkName;
-        GameObject text = talkLog.transform.GetChild(1).gameObject;
-        text.GetComponent<Text>().text = talkText;
+            talkLog.transform.SetParent(parentObject.transform, false);
 
-        talkLog.name = "TalkLog " + index;
-        index++;
+            GameObject name = talkLog.transform.GetChild(0).gameObject;
+            name.GetComponent<Text>().text = talkName;
+            GameObject text = talkLog.transform.GetChild(1).gameObject;
+            text.GetComponent<Text>().text = talkText;
+
+            talkLog.name = "TalkLog " + index;
+            index++;
+        }       
     }
 
     void backBtn_onClick()
