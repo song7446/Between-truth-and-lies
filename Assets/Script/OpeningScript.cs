@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
@@ -25,9 +26,22 @@ public class OpeningScript : MonoBehaviour
 
     public void openingScript()
     {
+        Scene scene = SceneManager.GetActiveScene();
+
+        switch (scene.name)
+        {
+            case "Scene#1":
+                txt = "Scene #1";
+                break;
+            case "Scene#2":
+                txt = "Scene #2";
+                break;
+        }
+
+        Debug.Log(txt);
+
         openingTxt.text = "";
 
-        txt = "Scene #1";
         delay = 0.25f;
 
         StartCoroutine(TextPrintScript.instance.TextPrint(delay, txt, openingTxt));

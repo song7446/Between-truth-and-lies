@@ -5,6 +5,7 @@ using System.Xml.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Scene1Script : MonoBehaviour
@@ -40,12 +41,13 @@ public class Scene1Script : MonoBehaviour
         }
         catch (IndexOutOfRangeException)
         {
-            if (CombinationButtonScript.Instance.ansCheckbool)
+            if (CombinationButtonScript.Instance.ansCheckBool)
             {
                 OpeningScript.instance.openingTxt.text = "";
                 OpeningScript.instance.obgsp.color = new Color(0,0,0,0);
                 OpeningScript.instance.openingBackGround.SetActive(true);
                 StartCoroutine(FadeInOut.instance.imageFadeIn(OpeningScript.instance.obgsp));
+                Invoke("nextSceneLoad", 10);
             }
             else
             {
@@ -80,6 +82,11 @@ public class Scene1Script : MonoBehaviour
         }
 
         return name;
+    }
+
+    public void nextSceneLoad()
+    {
+        SceneManager.LoadScene("Scene#2");
     }
 }
 

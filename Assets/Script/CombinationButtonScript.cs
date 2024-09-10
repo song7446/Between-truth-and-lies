@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CombinationButtonScript : MonoBehaviour
@@ -26,7 +27,7 @@ public class CombinationButtonScript : MonoBehaviour
     public GameObject noteLeftTextObj;
 
     // 정답 상태
-    public bool ansCheckbool;
+    public bool ansCheckBool;
 
     // 노트 왼쪽 페이지 텍스트 프리펩 불러오기용 오브젝트
     public GameObject loadTextObj;
@@ -65,7 +66,7 @@ public class CombinationButtonScript : MonoBehaviour
 
             // 답으로 넣은 대화 로그 자식들 모두 물러오기
             Transform[] allChildren = noteLeftTextObj.GetComponentsInChildren<Transform>();
-            
+
             // 모든 자식을 사용하기 위한 반복문
             foreach (Transform child in allChildren)
             {
@@ -73,7 +74,7 @@ public class CombinationButtonScript : MonoBehaviour
                 if (child.name == "LeftTextObj")
                 {
                     // 부모 요소는 넘기기
-                }                
+                }
                 else
                 {
                     // 자식요소는 모두 제거 
@@ -83,7 +84,7 @@ public class CombinationButtonScript : MonoBehaviour
 
             // 정답일 때 정답이라고 알려주는 오브젝트 활성화 
             AnswerResultScript.instance.corObj.SetActive(true);
-            
+
             // 정답이라고 알려주는 오브젝트 활성화 후 페이드 아웃
             StartCoroutine(FadeInOut.instance.textFadeOut(AnswerResultScript.instance.corObj.GetComponent<Text>()));
 
@@ -105,12 +106,17 @@ public class CombinationButtonScript : MonoBehaviour
                                                     "자신이 직접 자신의 범행을 신고했다. " +
                                                     "현장에서 발견된 증거도 용의자를 가르키는 중이지만 " +
                                                     "용의자는 자신의 범행을 인정하면서도 묵비권을 행사중이다. ";
-
             // 정답 텍스트 한글자씩 출력 
             StartCoroutine(TextPrintScript.instance.TextPrint(0.05f, answer, noteTextObj.GetComponent<Text>()));
-            
+
             // 정답 이후 버튼 페이드 아웃
-            StartCoroutine(FadeInOut.instance.textFadeOut(comBtn.transform.GetChild(0).GetComponent<Text>()));
+            StartCoroutine(FadeInOut.instance.textFadeOut(comBtn.transform.GetChild(0).GetComponent<Text>()));        
+
+            if (Scene1Script.instance.storyEnd)
+            {
+                Invoke("endingImgFadeIn", 10);
+                Invoke("nextSceneLoad", 15);               
+            }
         }
 
         else
@@ -203,13 +209,26 @@ public class CombinationButtonScript : MonoBehaviour
             if (i == 0)
             {
                 // 오답
-                ansCheckbool = false;
+                ansCheckBool = false;
                 return false;
             }
         }
 
         // 그게 아니면 정답
-        ansCheckbool = true;
+        ansCheckBool = true;
         return true;
+    }
+
+    public void endingImgFadeIn()
+    {
+        OpeningScript.instance.openingTxt.text = "";
+        OpeningScript.instance.obgsp.color = new Color(0, 0, 0, 0);
+        OpeningScript.instance.openingBackGround.SetActive(true);
+        StartCoroutine(FadeInOut.instance.imageFadeIn(OpeningScript.instance.obgsp));
+    }
+
+    public void nextSceneLoad()
+    {
+        SceneManager.LoadScene("Scene#2");
     }
 }
