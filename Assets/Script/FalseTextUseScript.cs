@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FalseTextUseScript : MonoBehaviour
 {
+    // 싱글톤으로 다른 스크립트 불러오기
     public static FalseTextUseScript instance;
 
     private void Awake()
@@ -15,14 +16,15 @@ public class FalseTextUseScript : MonoBehaviour
         }
     }
 
+    // 오답 텍스트 사용시 알림 오브젝트
     public GameObject falTxtObj;
 
     void Start()
     {
+        // 오답 텍스트 알림 오브젝트 비활성화
         falTxtObj.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

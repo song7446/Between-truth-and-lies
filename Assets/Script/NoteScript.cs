@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+// 가져온 함수를 수정했기 때문에 부정확함 
 public enum FlipMode
 {
     RightToLeft,
@@ -12,6 +13,7 @@ public enum FlipMode
 [ExecuteInEditMode]
 public class NoteScript : MonoBehaviour
 {
+    // 싱글톤으로 다른 스크립트 불러오기
     public static NoteScript instance;
 
     private void Awake()
@@ -21,29 +23,46 @@ public class NoteScript : MonoBehaviour
             NoteScript.instance = this;
 
         }
-    }
+    }   
 
+    // 노트의 부모
     public Canvas canvas;
+
+    // 주 노트 오브젝트 
     [SerializeField]
     public RectTransform NotePanel;
+
+    // 노트 배경
     public Sprite background;
+
+    // 노트 페이지 스프라이트
     public Sprite[] notePages;
-    public bool interactable = true;
+
+    // 노트 그림자 상태
     public bool enableShadowEffect = true;
-    //represent the index of the sprite shown in the right page
+
+    // 노트 페이지 스프라이트의 인덱스 - 현재 펼쳐져 있는 노트의 오른쪽 페이지 번호
     public int currentPage = 0;
+
+    // 노트의 총 페이지 개수
     public int TotalPageCount
     {
         get { return notePages.Length; }
     }
+
+    // 노트의 왼쪽 아래 꼭지점 위치
     public Vector3 EndBottomLeft
     {
         get { return ebl; }
     }
+
+    // 노트의 오른쪽 아래 꼭지점 위치
     public Vector3 EndBottomRight
     {
         get { return ebr; }
     }
+
+    // 노트의 높이 
     public float Height
     {
         get
@@ -52,36 +71,65 @@ public class NoteScript : MonoBehaviour
         }
     }
 
+    // 넘어가는 페이지의 이미지 
     public Image ClippingPlane;
+
+    // 다음 페이지의 이미지 
     public Image NextPageClip;
+
+    // 노트의 그림자 이미지  
     public Image Shadow;
+
+    // 왼쪽에서 오른쪽으로 넘길때 노트의 그림자 이미지 
     public Image ShadowLTR;
+
+    // 현재 펼쳐져 있는 페이지의 왼쪽 이미지 
     public Image Left;
+
+    // 왼쪽으로 넘길 때 다음 이미지 
     public Image LeftNext;
+
+    // 현재 펼쳐져 있는 페이지의 오른쪽 이미지 
     public Image Right;
+
+    // 오른쪽으로 넘길 때 다음 이미지 
     public Image RightNext;
+
+    // 넘기는 상태 이벤트 
     public UnityEvent OnFlip;
+
+    // 페이지를 넘길 때 꼭지점에 생기는 반지름 
     float radius1, radius2;
-    //Spine Bottom
+
+    // 노트의 가운데 바닥
     Vector3 sb;
-    //Spine Top
+
+    // 노트의 가운데 상단
     Vector3 st;
-    //corner of the page
+
+    // 페이지의 코너 
     Vector3 c;
-    //Edge Bottom Right
+
+    // 오른쪽 아래 쪽지점의 위치 
     Vector3 ebr;
-    //Edge Bottom Left
+
+    // 왼쪽 아래 꼭지점의 위치 
     Vector3 ebl;
-    //follow point 
+
+    // 노트가 넘어가는 지점
     Vector3 f;
-    //current flip mode
+
+    // 왼쪽으로 넘기는지 오른쪽으로 넘기는지 상태 enum
     FlipMode mode;
 
+    // 노트 활성화 상태 
     public bool noteBool = false;
 
     void Start()
     {
+        // 노트의 부모요소 받아오기 
         if (!canvas) canvas = GetComponentInParent<Canvas>();
+        // 없다면 에러 띄우기 
         if (!canvas) Debug.LogError("Note should be a child to canvas");
 
         Left.gameObject.SetActive(false);
