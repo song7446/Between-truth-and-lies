@@ -40,17 +40,17 @@ public class PoliceImgScript : MonoBehaviour
     }
 
     // 형사 이미지 페이드인 함수 
-    public void policeImageFadeIn()
+    public void PoliceImageFadeIn()
     {
         // 씬 #1 프론트 그라운드가 사라질때 형사 이미지 페이드인
-        StartCoroutine(FadeInOut.instance.srFadeIn(policeImgSr));
+        StartCoroutine(FadeInOut.instance.SrFadeIn(policeImgSr));
 
         // 형사 이미지 상태 
         policeImgOn = true;
     }
 
     // 형사 이미지 페이드인 스킵 
-    public void policeImageFadeInSkip()
+    public void PoliceImageFadeInSkip()
     {
         StopAllCoroutines();
         policeImgSr.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);

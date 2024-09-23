@@ -10,8 +10,9 @@ using UnityEngine.UI;
 
 public class Scene1Script : MonoBehaviour
 {
+    // 싱글톤으로 다른 스크립트 불러오기
     public static Scene1Script instance;
-    public bool storyEnd = false;
+    
     private void Awake()
     {
         if (Scene1Script.instance == null)
@@ -21,13 +22,16 @@ public class Scene1Script : MonoBehaviour
         }
     }
 
+    // 스토리 상태 
+    public bool storyEnd = false;
 
     // 씬#1 스토리 스크립트
     public string ScriptCollection(int num)
     {
+        // 반환할 텍스트 변수 초기화 
         string scriptText = "";
 
-
+        // 스토리 스크립트 
         string[] storyScript = {"이곳인가?", "오셨습니까 선배님", "그래 무슨 일인지 설명해 봐.", "복잡한 사건은 아닙니다.", "이 집에 살던 딸이 아버지를 살해했습니다.", "신고는 누가 했지?", "그게 딸 본인이 했습니다.",
                                 "아버지를 살해하고 바로 자수한건가...", "지금까지 조사해본 바로는", "사망 추정시각 전부터 지금까지 현장에 있던 사람이 피해자와 용의자 둘뿐이고", "침입의 흔적도 없는데다가",
                                 "흉기에서 딸의 지문까지 나온 상태입니다.","그럼 대충 끝난 것 아닌가?","왜 이렇게 어수선 하지?" ,"그게...", "왜 무슨 특이한 점이 있었나?", "용의자가 말하기로는",
@@ -37,34 +41,60 @@ public class Scene1Script : MonoBehaviour
                                 "..." , "둘이 부녀관계라고 하지 않았나?" , "맞습니다.", "젠장...", "벌써부터 골치 아프군..." };
         try
         {
+            // 스토리 카운트에 맞는 텍스트 저장
             scriptText = storyScript[num];
         }
+        // 스토리가 끝나면
         catch (IndexOutOfRangeException)
         {
+            // 중간에 정답을 맞췄다면
             if (CombinationButtonScript.Instance.ansCheckBool)
             {
+                // 오프닝 이미지 재활용 
+
+                // 오프닝 텍스트 비우기 
                 OpeningScript.instance.openingTxt.text = "";
+
+                // 오프닝 이미지 투명화 
                 OpeningScript.instance.obgsp.color = new Color(0,0,0,0);
+
+                // 오프닝 이미지 활성화 
                 OpeningScript.instance.openingBackGround.SetActive(true);
-                StartCoroutine(FadeInOut.instance.imageFadeIn(OpeningScript.instance.obgsp));
+
+                // 오프닝 이미지 페이드인 코루틴 
+                StartCoroutine(FadeInOut.instance.ImageFadeIn(OpeningScript.instance.obgsp));
+
+                // 10초 후 다음 씬 로드 
                 Invoke("nextSceneLoad", 10);
             }
+            // 중간에 정답을 못맞췄을 경우 
             else
             {
+                // 엔딩 이미지 활성화 
                 EndingScript.instance.endFrontGround.SetActive(true);
-                StartCoroutine(FadeInOut.instance.imageFadeIn(EndingScript.instance.endFrontGround.GetComponent<Image>()));
-                StartCoroutine(FadeInOut.instance.textFadeIn(EndingScript.instance.endingText));
+
+                // 엔딩 이미지 페이드인
+                StartCoroutine(FadeInOut.instance.ImageFadeIn(EndingScript.instance.endFrontGround.GetComponent<Image>()));
+
+                // 엔딩 텍스트 페이드인
+                StartCoroutine(FadeInOut.instance.TextFadeIn(EndingScript.instance.endingText));
             }
+
+            // 스토리 종료로 상태 변환
             storyEnd = true;
         }
 
+        // 스토리 카운트에 맞는 텍스트 반환 
         return scriptText;
     }
 
     // 씬#1 화자 이름 스크립트
     public string NameCollection(int num)
     {
+        // 반환할 이름 변수 초기화 
         string name = "";
+
+        // 화자 이름 
         string[] nameScript = { "주인공", "후배 형사", "주인공", "후배 형사", "후배 형사", "주인공", "후배 형사",
                                 "주인공","후배 형사", "후배 형사","후배 형사",
                                 "후배 형사","주인공","주인공", "후배 형사","주인공" ,"후배형사",
@@ -74,17 +104,23 @@ public class Scene1Script : MonoBehaviour
                                 "주인공", "주인공","후배 형사","주인공","주인공"};
         try
         {
+            // 스토리 카운트에 맞는 이름 저장 
             name = nameScript[num];
         }
+        // 스토리가 끝나면 
         catch (IndexOutOfRangeException)
         {
+            // 스토리 상태 종료로 변환 
             storyEnd = true;
         }
 
+        // 스토리 카운트에 맞는 이름 반환 
         return name;
     }
 
-    public void nextSceneLoad()
+
+    // 다음 씬 로드 함수 
+    public void NextSceneLoad()
     {
         SceneManager.LoadScene("Scene#2");
     }

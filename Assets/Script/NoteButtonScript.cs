@@ -25,7 +25,7 @@ public class NoteButtonScript : MonoBehaviour
     void Start()
     {
         // 버튼 리스너 추가 
-        noteBtn.onClick.AddListener(noteBtn_onClick);
+        noteBtn.onClick.AddListener(NoteBtn_onClick);
 
         // 클릭 불가 패널 찾기 
         btnOnPanel = GameObject.Find("ButtonOnPanel");
@@ -38,7 +38,7 @@ public class NoteButtonScript : MonoBehaviour
     }
 
     // 노트 버튼 클릭 함수 
-    public void noteBtn_onClick()
+    public void NoteBtn_onClick()
     {
         // 노트 코루틴 활성화중 클릭 막기 
         if (AutoFlipScript.instance.isFlipping)
@@ -81,10 +81,5 @@ public class NoteButtonScript : MonoBehaviour
             // 조합 버튼 활성화 
             CombinationButtonScript.Instance.comBtn.gameObject.SetActive(true);           
         }
-    }
-
-    void Update()
-    {
-
     }
 }

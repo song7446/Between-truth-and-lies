@@ -9,9 +9,9 @@ public class OpeningScript : MonoBehaviour
     public static OpeningScript instance;
     private void Awake()
     {
-        if (OpeningScript.instance == null)
+        if (global::OpeningScript.instance == null)
         {
-            OpeningScript.instance = this;
+            global::OpeningScript.instance = this;
         }
     }
 
@@ -32,7 +32,7 @@ public class OpeningScript : MonoBehaviour
 
    
     // 오프닝 함수
-    public void openingScript()
+    public void ProceedOpeningScript()
     {
         // 씬 불러오기 
         Scene scene = SceneManager.GetActiveScene();
@@ -59,24 +59,24 @@ public class OpeningScript : MonoBehaviour
     }
 
     // 오프닝 이미지 페이드 아웃 함수 
-    public void openingImageFadeOut()
+    public void OpeningImageFadeOut()
     {
         // 프론트 그라운드 오브젝트
         openingBackGround = GameObject.Find("OpeningFrontGround");
         obgsp = openingBackGround.GetComponent<Image>();
 
         // 프론트 그라운드 이미지 텍스트 페이드 아웃
-        StartCoroutine(FadeInOut.instance.imageFadeOut(obgsp));
-        StartCoroutine(FadeInOut.instance.textFadeOut(openingTxt));            
+        StartCoroutine(FadeInOut.instance.ImageFadeOut(obgsp));
+        StartCoroutine(FadeInOut.instance.TextFadeOut(openingTxt));            
     }
 
     // 오프닝 이미지 페이드아웃 스킵
     public void openingImageFadeOutCoroutineSkip()
     {
         // 오프닝 이미지 코루틴 정지
-        StopCoroutine(FadeInOut.instance.imageFadeOut(obgsp));
+        StopCoroutine(FadeInOut.instance.ImageFadeOut(obgsp));
         // 오프닝 텍스트 코루틴 정지 
-        StopCoroutine(FadeInOut.instance.textFadeOut(openingTxt));
+        StopCoroutine(FadeInOut.instance.TextFadeOut(openingTxt));
 
         // 페이드 아웃 스킵이기 때문에 바로 투명화 
         obgsp.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);

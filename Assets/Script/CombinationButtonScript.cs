@@ -44,7 +44,7 @@ public class CombinationButtonScript : MonoBehaviour
     void Start()
     {
         // 조합 버튼 리스너
-        comBtn.onClick.AddListener(comBtn_onClick);
+        comBtn.onClick.AddListener(ComBtn_onClick);
 
         // 조합 버튼은 노트가 열렸을 때 사용하기 때문에 시작할때는 비활성화
         comBtn.gameObject.SetActive(false);
@@ -57,10 +57,10 @@ public class CombinationButtonScript : MonoBehaviour
     }
 
     // 조합 버튼 리스너 함수
-    void comBtn_onClick()
+    void ComBtn_onClick()
     {
         // 정답 체크 함수 불러오기
-        if (ansCheck())
+        if (AnsCheck())
         {
             // 정답 일때  
 
@@ -86,7 +86,7 @@ public class CombinationButtonScript : MonoBehaviour
             AnswerResultScript.instance.corObj.SetActive(true);
 
             // 정답이라고 알려주는 오브젝트 활성화 후 페이드 아웃
-            StartCoroutine(FadeInOut.instance.textFadeOut(AnswerResultScript.instance.corObj.GetComponent<Text>()));
+            StartCoroutine(FadeInOut.instance.TextFadeOut(AnswerResultScript.instance.corObj.GetComponent<Text>()));
 
             // 정답 텍스트 추가하기 위해 프리펩 불러오기 
             loadTextObj = Resources.Load<GameObject>("PreFab/NoteText");
@@ -110,7 +110,7 @@ public class CombinationButtonScript : MonoBehaviour
             StartCoroutine(TextPrintScript.instance.TextPrint(0.05f, answer, noteTextObj.GetComponent<Text>()));
 
             // 정답 이후 버튼 페이드 아웃
-            StartCoroutine(FadeInOut.instance.textFadeOut(comBtn.transform.GetChild(0).GetComponent<Text>()));        
+            StartCoroutine(FadeInOut.instance.TextFadeOut(comBtn.transform.GetChild(0).GetComponent<Text>()));        
 
             if (Scene1Script.instance.storyEnd)
             {
@@ -127,12 +127,12 @@ public class CombinationButtonScript : MonoBehaviour
             AnswerResultScript.instance.worObj.SetActive(true);
 
             // 오답이라고 알려주는 오브젝트 활성화 후 페이드 아웃
-            StartCoroutine(FadeInOut.instance.textFadeOut(AnswerResultScript.instance.worObj.GetComponent<Text>()));
+            StartCoroutine(FadeInOut.instance.TextFadeOut(AnswerResultScript.instance.worObj.GetComponent<Text>()));
         }
     }
 
     // 정답 체크 함수
-    public bool ansCheck()
+    public bool AnsCheck()
     {
         // 답 오브젝트 모두 불러오기 
         Transform[] allChildren = noteLeftTextObj.GetComponentsInChildren<Transform>();
@@ -219,15 +219,15 @@ public class CombinationButtonScript : MonoBehaviour
         return true;
     }
 
-    public void endingImgFadeIn()
+    public void EndingImgFadeIn()
     {
         OpeningScript.instance.openingTxt.text = "";
         OpeningScript.instance.obgsp.color = new Color(0, 0, 0, 0);
         OpeningScript.instance.openingBackGround.SetActive(true);
-        StartCoroutine(FadeInOut.instance.imageFadeIn(OpeningScript.instance.obgsp));
+        StartCoroutine(FadeInOut.instance.ImageFadeIn(OpeningScript.instance.obgsp));
     }
 
-    public void nextSceneLoad()
+    public void NextSceneLoad()
     {
         SceneManager.LoadScene("Scene#2");
     }

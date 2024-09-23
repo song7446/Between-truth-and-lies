@@ -28,9 +28,4 @@ public class AnswerResultScript : MonoBehaviour
         corObj.SetActive(false);
         worObj.SetActive(false);
     }
-
-    void Update()
-    {
-        
-    }
 }

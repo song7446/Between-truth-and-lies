@@ -28,9 +28,4 @@ public class EndingScript : MonoBehaviour
         // 엔딩이미지 비활성화
         endFrontGround.SetActive(false);
     }
-
-    void Update()
-    {
-        
-    }
 }

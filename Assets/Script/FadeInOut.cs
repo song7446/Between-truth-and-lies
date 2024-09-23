@@ -21,7 +21,7 @@ public class FadeInOut : MonoBehaviour
 
 
     // 스프라이트렌더러 페이드인 함수 
-    public IEnumerator srFadeIn(SpriteRenderer spriteRenderer)
+    public IEnumerator SrFadeIn(SpriteRenderer spriteRenderer)
     {
         // 코루틴 중
         StoryManager.instance.coroutineBool = true;
@@ -45,7 +45,7 @@ public class FadeInOut : MonoBehaviour
     }
 
     // 스프라이트 렌더러 페이드아웃 함수 
-    public IEnumerator srFadeOut(SpriteRenderer spriteRenderer)
+    public IEnumerator SrFadeOut(SpriteRenderer spriteRenderer)
     {
         // 코루틴 중
         StoryManager.instance.coroutineBool = true;
@@ -70,7 +70,7 @@ public class FadeInOut : MonoBehaviour
     }
 
     // 이미지 페이드인 함수
-    public IEnumerator imageFadeIn(Image image)
+    public IEnumerator ImageFadeIn(Image image)
     {
         // 코루틴 중
         StoryManager.instance.coroutineBool = true;
@@ -100,7 +100,7 @@ public class FadeInOut : MonoBehaviour
     }
 
     // 이미지 페이드아웃 함수 
-    public IEnumerator imageFadeOut(Image image)
+    public IEnumerator ImageFadeOut(Image image)
     {
         // 코루틴 중
         StoryManager.instance.coroutineBool = true;
@@ -130,7 +130,7 @@ public class FadeInOut : MonoBehaviour
     }
 
     // 텍스트 페이드인 함수
-    public IEnumerator textFadeIn(Text text)
+    public IEnumerator TextFadeIn(Text text)
     {
         // 코루틴 중
         StoryManager.instance.coroutineBool = true;
@@ -160,7 +160,7 @@ public class FadeInOut : MonoBehaviour
     }
 
     // 텍스트 페이드아웃 함수 
-    public IEnumerator textFadeOut(Text text)
+    public IEnumerator TextFadeOut(Text text)
     {
         // 코루틴 중
         StoryManager.instance.coroutineBool = true;

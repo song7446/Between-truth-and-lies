@@ -53,7 +53,7 @@ public class NoteTextObjScript : MonoBehaviour
     public Text talkText;
 
     // 노트 텍스트 업데이트 함수 
-    public bool updateNoteText(GameObject obj)
+    public bool UpdateNoteText(GameObject obj)
     {
         // 받아온 오브젝트의 자식 요소로 이름과 내용 받아오기 / 0 = 이름 1 = 내용
         talkName = obj.transform.GetChild(0).gameObject.GetComponent<Text>();
@@ -87,7 +87,7 @@ public class NoteTextObjScript : MonoBehaviour
     }
 
     // 노트 텍스트 삭제 함수 
-    public void deleteNoteText(GameObject obj)
+    public void DeleteNoteText(GameObject obj)
     {
         // 노트 텍스트 요소중 삭제할 목록 이름으로 찾기 
         textObj = GameObject.Find(obj.transform.GetChild(1).gameObject.GetComponent<Text>().text);
@@ -99,11 +99,5 @@ public class NoteTextObjScript : MonoBehaviour
     {
         // 노트 텍스트 부모 오브젝트 비활성화 
         noteTxtObj.SetActive(false);
-    }
-
-
-    void Update()
-    {
-        
     }
 }

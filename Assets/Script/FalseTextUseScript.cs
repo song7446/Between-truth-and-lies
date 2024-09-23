@@ -24,9 +24,4 @@ public class FalseTextUseScript : MonoBehaviour
         // 오답 텍스트 알림 오브젝트 비활성화
         falTxtObj.SetActive(false);
     }
-
-    void Update()
-    {
-        
-    }
 }
