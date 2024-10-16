@@ -121,7 +121,7 @@ public class TextUseButtonScript : MonoBehaviour
                 FalseTextUseScript.instance.falTxtObj.SetActive(true);
 
                 // 이후 주요 텍스트 아닌 텍스트 사용 오브젝트 페이드 아웃 
-                StartCoroutine(FadeInOut.instance.TextFadeOut(FalseTextUseScript.instance.falTxtObj.GetComponent<Text>()));
+                StartCoroutine(FadeInOut.instance.FadeOut(FalseTextUseScript.instance.falTxtObj.GetComponent<Text>(), 0.25f));
             }
         }
         // 주요 텍스트가 4개 이상일 때 
@@ -137,7 +137,7 @@ public class TextUseButtonScript : MonoBehaviour
             TooManyTextUseScript.instance.tooManyTextUseObj.SetActive(true);
 
             // 너무 많은 텍스트 사용 오브젝트 페이드 아웃 
-            StartCoroutine(FadeInOut.instance.TextFadeOut(TooManyTextUseScript.instance.tooManyTextUseObj.GetComponent<Text>()));
+            StartCoroutine(FadeInOut.instance.FadeOut(TooManyTextUseScript.instance.tooManyTextUseObj.GetComponent<Text>(), 0.25f));
         }
 
         // 주요 텍스트 사용 버튼 비활성화 

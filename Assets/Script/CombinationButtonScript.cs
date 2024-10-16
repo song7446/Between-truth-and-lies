@@ -86,7 +86,7 @@ public class CombinationButtonScript : MonoBehaviour
             AnswerResultScript.instance.corObj.SetActive(true);
 
             // 정답이라고 알려주는 오브젝트 활성화 후 페이드 아웃
-            StartCoroutine(FadeInOut.instance.TextFadeOut(AnswerResultScript.instance.corObj.GetComponent<Text>()));
+            StartCoroutine(FadeInOut.instance.FadeOut(AnswerResultScript.instance.corObj.GetComponent<Text>(), 0.25f));
 
             // 정답 텍스트 추가하기 위해 프리펩 불러오기 
             loadTextObj = Resources.Load<GameObject>("PreFab/NoteText");
@@ -110,7 +110,7 @@ public class CombinationButtonScript : MonoBehaviour
             StartCoroutine(TextPrintScript.instance.TextPrint(0.05f, answer, noteTextObj.GetComponent<Text>()));
 
             // 정답 이후 버튼 페이드 아웃
-            StartCoroutine(FadeInOut.instance.TextFadeOut(comBtn.transform.GetChild(0).GetComponent<Text>()));        
+            StartCoroutine(FadeInOut.instance.FadeOut(comBtn.transform.GetChild(0).GetComponent<Text>(),0.25f));        
 
             if (Scene1Script.instance.storyEnd)
             {
@@ -127,7 +127,7 @@ public class CombinationButtonScript : MonoBehaviour
             AnswerResultScript.instance.worObj.SetActive(true);
 
             // 오답이라고 알려주는 오브젝트 활성화 후 페이드 아웃
-            StartCoroutine(FadeInOut.instance.TextFadeOut(AnswerResultScript.instance.worObj.GetComponent<Text>()));
+            StartCoroutine(FadeInOut.instance.FadeOut(AnswerResultScript.instance.worObj.GetComponent<Text>(),0.25f));
         }
     }
 
@@ -224,7 +224,7 @@ public class CombinationButtonScript : MonoBehaviour
         OpeningScript.instance.openingTxt.text = "";
         OpeningScript.instance.obgsp.color = new Color(0, 0, 0, 0);
         OpeningScript.instance.openingBackGround.SetActive(true);
-        StartCoroutine(FadeInOut.instance.ImageFadeIn(OpeningScript.instance.obgsp));
+        StartCoroutine(FadeInOut.instance.FadeIn(OpeningScript.instance.obgsp, 0.25f));
     }
 
     public void NextSceneLoad()

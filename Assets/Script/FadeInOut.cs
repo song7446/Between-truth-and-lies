@@ -16,12 +16,10 @@ public class FadeInOut : MonoBehaviour
         }
     }
 
-    // 페이드 인아웃 속도
-    float fadeSpeed = 0.5f;
-
+    // 페이드 인 아웃은 매개변수만 다르기 때문에 오버로딩
 
     // 스프라이트렌더러 페이드인 함수 
-    public IEnumerator SrFadeIn(SpriteRenderer spriteRenderer)
+    public IEnumerator FadeIn(SpriteRenderer spriteRenderer, float fadeSpeed)
     {
         // 코루틴 중
         StoryManager.instance.coroutineBool = true;
@@ -44,33 +42,8 @@ public class FadeInOut : MonoBehaviour
         StoryManager.instance.coroutineBool = false;
     }
 
-    // 스프라이트 렌더러 페이드아웃 함수 
-    public IEnumerator SrFadeOut(SpriteRenderer spriteRenderer)
-    {
-        // 코루틴 중
-        StoryManager.instance.coroutineBool = true;
-
-        // 페이드 아웃이기 때문에 투명도가 모두 채워진 상태에서 시작
-        float fade = 1.0f;
-
-        // 투명해질때까지 반복
-        while (spriteRenderer.material.color.a > 0.0f)
-        {
-            // 투명도 속도 조절
-            fade -= Time.deltaTime * fadeSpeed;
-
-            // 투명도 조절
-            spriteRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, fade);
-
-            yield return null;
-        }
-
-        // 코루틴 끝
-        StoryManager.instance.coroutineBool = false;
-    }
-
-    // 이미지 페이드인 함수
-    public IEnumerator ImageFadeIn(Image image)
+    // 이미지 페이드인 함수 
+    public IEnumerator FadeIn(Image image, float fadeSpeed)
     {
         // 코루틴 중
         StoryManager.instance.coroutineBool = true;
@@ -78,49 +51,13 @@ public class FadeInOut : MonoBehaviour
         // 페이드 인이기 때문에 투명한 상태에서 시작 
         float fade = 0.0f;
 
-        // 이미지의 색 받아오기 
-        float r = image.color.r;
-        float g = image.color.g;
-        float b = image.color.b;
-
         // 투명도가 모두 채워질때까지 반복
-        while (image.color.a < 1.0f)
+        while (image.material.color.a < 1.0f)
         {
             // 투명도 속도 조절
             fade += Time.deltaTime * fadeSpeed;
-
             // 투명도 조절
-            image.color = new Color(r, g, b, fade);
-
-            yield return null;
-        }
-
-        // 코루틴 끝
-        StoryManager.instance.coroutineBool = false;
-    }
-
-    // 이미지 페이드아웃 함수 
-    public IEnumerator ImageFadeOut(Image image)
-    {
-        // 코루틴 중
-        StoryManager.instance.coroutineBool = true;
-
-        // 페이드 아웃이기 때문에 투명도가 모두 채워진 상태에서 시작
-        float fade = 1.0f;
-
-        // 이미지의 색 받아오기
-        float r = image.color.r;
-        float g = image.color.g;
-        float b = image.color.b;
-
-        // 투명해질때까지 반복
-        while (image.color.a > 0.0f)
-        {
-            // 투명도 속도 도절
-            fade -= Time.deltaTime * fadeSpeed;
-
-            // 투명도 조절
-            image.color = new Color(r, g, b, fade);
+            image.material.color = new Color(1.0f, 1.0f, 1.0f, fade);
 
             yield return null;
         }
@@ -130,7 +67,7 @@ public class FadeInOut : MonoBehaviour
     }
 
     // 텍스트 페이드인 함수
-    public IEnumerator TextFadeIn(Text text)
+    public IEnumerator FadeIn(Text text, float fadeSpeed)
     {
         // 코루틴 중
         StoryManager.instance.coroutineBool = true;
@@ -159,8 +96,61 @@ public class FadeInOut : MonoBehaviour
         StoryManager.instance.coroutineBool = false;
     }
 
+
+
+
+    // 스프라이트렌더러 페이드아웃 함수 
+    public IEnumerator FadeOut(SpriteRenderer spriteRenderer, float fadeSpeed)
+    {
+        // 코루틴 중
+        StoryManager.instance.coroutineBool = true;
+
+        // 페이드 아웃이기 때문에 투명도가 모두 채워진 상태에서 시작
+        float fade = 1.0f;
+
+        // 투명해질때까지 반복
+        while (spriteRenderer.material.color.a > 0.0f)
+        {
+            // 투명도 속도 조절
+            fade -= Time.deltaTime * fadeSpeed;
+
+            // 투명도 조절
+            spriteRenderer.material.color = new Color(1.0f, 1.0f, 1.0f, fade);
+
+            yield return null;
+        }
+
+        // 코루틴 끝
+        StoryManager.instance.coroutineBool = false;
+    }
+
+    // 이미지 페이드아웃 함수 
+    public IEnumerator FadeOut(Image image, float fadeSpeed)
+    {
+        // 코루틴 중
+        StoryManager.instance.coroutineBool = true;
+
+        // 페이드 아웃이기 때문에 투명도가 모두 채워진 상태에서 시작
+        float fade = 1.0f;
+
+        // 투명해질때까지 반복
+        while (image.material.color.a > 0.0f)
+        {
+            // 투명도 속도 조절
+            fade -= Time.deltaTime * fadeSpeed;
+
+            // 투명도 조절
+            image.material.color = new Color(1.0f, 1.0f, 1.0f, fade);
+
+            yield return null;
+        }
+
+        // 코루틴 끝
+        StoryManager.instance.coroutineBool = false;
+    }
+
     // 텍스트 페이드아웃 함수 
-    public IEnumerator TextFadeOut(Text text)
+    public IEnumerator FadeOut(Text text, float fadeSpeed)
     {
         // 코루틴 중
         StoryManager.instance.coroutineBool = true;

@@ -43,7 +43,7 @@ public class PoliceImgScript : MonoBehaviour
     public void PoliceImageFadeIn()
     {
         // 씬 #1 프론트 그라운드가 사라질때 형사 이미지 페이드인
-        StartCoroutine(FadeInOut.instance.SrFadeIn(policeImgSr));
+        StartCoroutine(FadeInOut.instance.FadeOut(policeImgSr, 0.25f));
 
         // 형사 이미지 상태 
         policeImgOn = true;

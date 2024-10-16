@@ -66,17 +66,17 @@ public class OpeningScript : MonoBehaviour
         obgsp = openingBackGround.GetComponent<Image>();
 
         // 프론트 그라운드 이미지 텍스트 페이드 아웃
-        StartCoroutine(FadeInOut.instance.ImageFadeOut(obgsp));
-        StartCoroutine(FadeInOut.instance.TextFadeOut(openingTxt));            
+        StartCoroutine(FadeInOut.instance.FadeOut(obgsp, 0.25f));
+        StartCoroutine(FadeInOut.instance.FadeOut(openingTxt, 0.25f));            
     }
 
     // 오프닝 이미지 페이드아웃 스킵
     public void openingImageFadeOutCoroutineSkip()
     {
         // 오프닝 이미지 코루틴 정지
-        StopCoroutine(FadeInOut.instance.ImageFadeOut(obgsp));
+        StopCoroutine(FadeInOut.instance.FadeOut(obgsp, 0.25f));
         // 오프닝 텍스트 코루틴 정지 
-        StopCoroutine(FadeInOut.instance.TextFadeOut(openingTxt));
+        StopCoroutine(FadeInOut.instance.FadeOut(openingTxt, 0.25f));
 
         // 페이드 아웃 스킵이기 때문에 바로 투명화 
         obgsp.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);

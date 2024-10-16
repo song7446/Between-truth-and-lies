@@ -62,7 +62,7 @@ public class Scene1Script : MonoBehaviour
                 OpeningScript.instance.openingBackGround.SetActive(true);
 
                 // 오프닝 이미지 페이드인 코루틴 
-                StartCoroutine(FadeInOut.instance.ImageFadeIn(OpeningScript.instance.obgsp));
+                StartCoroutine(FadeInOut.instance.FadeOut(OpeningScript.instance.obgsp, 0.25f));
 
                 // 10초 후 다음 씬 로드 
                 Invoke("nextSceneLoad", 10);
@@ -74,10 +74,10 @@ public class Scene1Script : MonoBehaviour
                 EndingScript.instance.endFrontGround.SetActive(true);
 
                 // 엔딩 이미지 페이드인
-                StartCoroutine(FadeInOut.instance.ImageFadeIn(EndingScript.instance.endFrontGround.GetComponent<Image>()));
+                StartCoroutine(FadeInOut.instance.FadeOut(EndingScript.instance.endFrontGround.GetComponent<Image>(), 0.25f));
 
                 // 엔딩 텍스트 페이드인
-                StartCoroutine(FadeInOut.instance.TextFadeIn(EndingScript.instance.endingText));
+                StartCoroutine(FadeInOut.instance.FadeOut(EndingScript.instance.endingText, 0.25f));
             }
 
             // 스토리 종료로 상태 변환
